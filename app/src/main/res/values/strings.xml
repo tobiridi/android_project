@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Exam project</string>
+    <string name="connection">Connection</string>
+    <string name="inscription" translatable="false">Inscription</string>
+    <string name="email_address" translatable="false">Email</string>
+    <string name="password">Password</string>
+</resources>

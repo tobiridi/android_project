@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Projet d\'examen</string>
+    <string name="password">Mot de passe</string>
+    <string name="connection">Connexion</string>
+</resources>
