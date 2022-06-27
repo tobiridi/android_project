@@ -10,9 +10,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/connection"
-        android:gravity="center"
-        android:textSize="30sp"
+        android:text="@string/connection_title"
+        style="@style/tv_title"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="80dp"/>
 
@@ -20,34 +19,31 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:hint="@string/email_address"
-        android:layout_gravity="center"
-        android:textSize="20sp"
+        android:hint="@string/email_address_text"
         android:layout_marginBottom="20dp"
-        android:textAlignment="center"/>
+        style="@style/tv_input"/>
 
     <EditText
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:hint="@string/password"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"
-        android:textAlignment="center"/>
+        android:hint="@string/password_text"
+        style="@style/tv_input"/>
 
     <Button
+        android:id="@+id/btn_connection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/connection"
+        android:text="@string/connection_title"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:layout_margin="20dp" />
 
     <Button
+        android:id="@+id/btn_inscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/inscription"
+        android:text="@string/inscription_title"
         android:textSize="20sp"
         android:layout_gravity="center" />
 

@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Exam project</string>
-    <string name="connection">Connection</string>
-    <string name="inscription" translatable="false">Inscription</string>
-    <string name="email_address" translatable="false">Email</string>
-    <string name="password">Password</string>
+    <string name="connection_title">Connection</string>
+    <string name="inscription_title" translatable="false">Inscription</string>
+    <string name="email_address_text" translatable="false">Email</string>
+    <string name="password_text">Password</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="confirm_text">Confirm</string>
+    <string name="user_success_message">User created</string>
 </resources>

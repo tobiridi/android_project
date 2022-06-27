@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Projet d\'examen</string>
-    <string name="password">Mot de passe</string>
-    <string name="connection">Connexion</string>
+    <string name="connection_title">Connexion</string>
+    <string name="password_text">Mot de passe</string>
+    <string name="cancel_text">Annuler</string>
+    <string name="confirm_text">Confirmer</string>
+    <string name="user_success_message">Utilisateur créer</string>
 </resources>

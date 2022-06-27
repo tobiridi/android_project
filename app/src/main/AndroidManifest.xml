@@ -5,11 +5,14 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:isGame="false"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ExamProject"
-        android:isGame="false">
+        android:theme="@style/Theme.ExamProject">
+        <activity
+            android:name=".InscriptionActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
