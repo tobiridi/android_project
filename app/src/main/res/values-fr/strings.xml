@@ -6,4 +6,9 @@
     <string name="cancel_text">Annuler</string>
     <string name="confirm_text">Confirmer</string>
     <string name="user_success_message">Utilisateur créer</string>
+    <string name="city_text">Ville</string>
+    <string name="postal_code_text">Code postale</string>
+    <string name="confirm_password_text">Confirmer le mot de passe</string>
+    <string name="postal_address_text">Addresse postale</string>
+    <string name="username_text">Nom d\'utilisateur</string>
 </resources>

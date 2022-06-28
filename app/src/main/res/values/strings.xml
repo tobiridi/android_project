@@ -2,9 +2,16 @@
     <string name="app_name">Exam project</string>
     <string name="connection_title">Connection</string>
     <string name="inscription_title" translatable="false">Inscription</string>
+    <!-- input text -->
     <string name="email_address_text" translatable="false">Email</string>
+    <string name="username_text">Username</string>
     <string name="password_text">Password</string>
+    <string name="confirm_password_text">Confirm password</string>
+    <string name="city_text">City</string>
+    <string name="postal_code_text">Postal code</string>
+    <string name="postal_address_text">Postal address</string>
     <string name="cancel_text">Cancel</string>
     <string name="confirm_text">Confirm</string>
+    <!-- messages -->
     <string name="user_success_message">User created</string>
 </resources>

@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import be.jadoulle.examproject.asynchronousTask.UserCreateAsyncTask;
 
@@ -26,6 +29,17 @@ public class InscriptionActivity extends AppCompatActivity {
     private View.OnClickListener confirm_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            //get all elements
+            ArrayList<EditText> allUserInfo = new ArrayList<>();
+            allUserInfo.add(findViewById(R.id.et_username));
+            allUserInfo.add(findViewById(R.id.et_email));
+            allUserInfo.add(findViewById(R.id.et_password));
+            allUserInfo.add(findViewById(R.id.et_confirm_password));
+            allUserInfo.add(findViewById(R.id.et_postal_address));
+            allUserInfo.add(findViewById(R.id.et_postal_code));
+            allUserInfo.add(findViewById(R.id.et_city));
+
+
             //TODO : insert a new user in DB (asyncTask) + back to main activity
             //TODO : send the form data as parameter to AsyncTask
             new UserCreateAsyncTask(InscriptionActivity.this).execute();

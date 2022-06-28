@@ -14,30 +14,107 @@
         android:layout_marginBottom="20dp"
         />
 
-    <EditText
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/inscription_title"
-        style="@style/tv_input"/>
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cancel_text"
-            style="@style/btn_cancel"/>
-        <Button
-            android:id="@+id/btn_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/confirm_text"
-            style="@style/btn_confirm"/>
-    </LinearLayout>
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/username_text"
+                android:autofillHints="username"
+                style="@style/tv_input"
+                android:layout_margin="10dp"/>
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email_address_text"
+                android:autofillHints="emailAddress"
+                style="@style/tv_input"
+                android:layout_margin="10dp"/>
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/password_text"
+                android:autofillHints="password"
+                style="@style/tv_input"
+                android:layout_margin="10dp"/>
+
+            <EditText
+                android:id="@+id/et_confirm_password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/confirm_password_text"
+                android:autofillHints="password"
+                style="@style/tv_input"
+                android:layout_margin="10dp"/>
+
+            <EditText
+                android:id="@+id/et_postal_address"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPostalAddress"
+                android:hint="@string/postal_address_text"
+                android:autofillHints="postalAddress"
+                style="@style/tv_input"
+                android:layout_margin="10dp"/>
+
+            <EditText
+                android:id="@+id/et_postal_code"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/postal_code_text"
+                android:autofillHints="postalCode"
+                style="@style/tv_input"
+                android:layout_margin="10dp"/>
+
+            <EditText
+                android:id="@+id/et_city"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="textAutoCorrect"
+                android:hint="@string/city_text"
+                android:autofillHints="name"
+                style="@style/tv_input"
+                android:layout_margin="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel_text"
+                    style="@style/btn_cancel"/>
+                <Button
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirm_text"
+                    style="@style/btn_confirm"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
