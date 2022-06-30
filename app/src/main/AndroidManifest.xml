@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamProject">
         <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="true"
+            android:label="@string/title_activity_login" />
+        <activity
             android:name=".InscriptionActivity"
             android:exported="true" />
         <activity

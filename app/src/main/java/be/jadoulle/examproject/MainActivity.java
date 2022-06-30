@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent connection_intent = new Intent();
-            //TODO : use async task to verif in db
+            //TODO : use async task to verif in db, script php ready
             /**
              * if correct => connect the user
              * else display a toast

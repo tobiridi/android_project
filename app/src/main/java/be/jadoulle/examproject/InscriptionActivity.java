@@ -9,9 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import be.jadoulle.examproject.asynchronousTask.UserCreateAsyncTask;
+import be.jadoulle.examproject.pojo.User;
 
 public class InscriptionActivity extends AppCompatActivity {
     public static final int INSCRIPTION_ACTIVITY_CODE = 2;
@@ -30,21 +32,46 @@ public class InscriptionActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             //get all elements
-            ArrayList<EditText> allUserInfo = new ArrayList<>();
-            allUserInfo.add(findViewById(R.id.et_username));
-            allUserInfo.add(findViewById(R.id.et_email));
-            allUserInfo.add(findViewById(R.id.et_password));
-            allUserInfo.add(findViewById(R.id.et_confirm_password));
-            allUserInfo.add(findViewById(R.id.et_postal_address));
-            allUserInfo.add(findViewById(R.id.et_postal_code));
-            allUserInfo.add(findViewById(R.id.et_city));
-
+            EditText et_username = findViewById(R.id.et_username);
+            EditText et_email = findViewById(R.id.et_email);
+            EditText et_password = findViewById(R.id.et_password);
+            EditText et_confirm_password = findViewById(R.id.et_confirm_password);
+            EditText et_postal_address = findViewById(R.id.et_postal_address);
+            EditText et_postal_code = findViewById(R.id.et_postal_code);
+            EditText et_city = findViewById(R.id.et_city);
 
             //TODO : insert a new user in DB (asyncTask) + back to main activity
             //TODO : send the form data as parameter to AsyncTask
-            new UserCreateAsyncTask(InscriptionActivity.this).execute();
+            new UserCreateAsyncTask(InscriptionActivity.this).execute(
+                    et_username.getText().toString(),
+                    et_email.getText().toString(),
+                    et_password.getText().toString(),
+                    et_confirm_password.getText().toString(),
+                    et_postal_address.getText().toString(),
+                    et_postal_code.getText().toString(),
+                    et_city.getText().toString()
+            );
         }
     };
+
+    View.OnFocusChangeListener focus_listener = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View view, boolean b) {
+            EditText et_password = findViewById(R.id.et_password);
+            EditText et_confirm_password = findViewById(R.id.et_confirm_password);
+            if(!view.isInEditMode()){
+                String confirmPassword = et_confirm_password.getText().toString();
+                String password = et_password.getText().toString();
+                if (password.equals(confirmPassword)){
+                    Toast.makeText(InscriptionActivity.this, "mot de passe identique", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(InscriptionActivity.this, "mot de passe non identique", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +83,16 @@ public class InscriptionActivity extends AppCompatActivity {
 
         btn_cancel.setOnClickListener(cancel_listener);
         btn_confirm.setOnClickListener(confirm_listener);
+
+        EditText et_confirm_password = findViewById(R.id.et_confirm_password);
+        et_confirm_password.setOnFocusChangeListener(focus_listener);
     }
 
     //methods called by AsyncTask
-    public void endMessage(String message){
+    public void successUserCreation(String message){
+        //TODO : if user is created or not
         Intent success_intent = new Intent();
-        success_intent.putExtra("confirm_message", message);
+        success_intent.putExtra("confirm_message", "message");
         setResult(RESULT_OK, success_intent);
         finish();
     }

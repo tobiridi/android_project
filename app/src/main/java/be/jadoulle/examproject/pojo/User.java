@@ -15,9 +15,9 @@ public class User implements Serializable {
     public int getId() {
         return id;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getUsername() {
         return username;
@@ -69,6 +69,16 @@ public class User implements Serializable {
     public User(int id, String username, String email, String password, String postalAddress,
                 String postalCode, String city) {
         this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.postalAddress = postalAddress;
+        this.postalCode = postalCode;
+        this.city = city;
+    }
+
+    public User(String username, String email, String password, String postalAddress,
+                String postalCode, String city) {
         this.username = username;
         this.email = email;
         this.password = password;
