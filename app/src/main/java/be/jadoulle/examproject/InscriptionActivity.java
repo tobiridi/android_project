@@ -37,6 +37,7 @@ public class InscriptionActivity extends AppCompatActivity {
             EditText et_password = findViewById(R.id.et_password);
             EditText et_confirm_password = findViewById(R.id.et_confirm_password);
             EditText et_postal_address = findViewById(R.id.et_postal_address);
+            EditText et_street_number = findViewById(R.id.et_street_number);
             EditText et_postal_code = findViewById(R.id.et_postal_code);
             EditText et_city = findViewById(R.id.et_city);
 
@@ -49,7 +50,8 @@ public class InscriptionActivity extends AppCompatActivity {
                     et_confirm_password.getText().toString(),
                     et_postal_address.getText().toString(),
                     et_postal_code.getText().toString(),
-                    et_city.getText().toString()
+                    et_city.getText().toString(),
+                    et_street_number.getText().toString()
             );
         }
     };

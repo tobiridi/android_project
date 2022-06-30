@@ -21,7 +21,7 @@
         android:hint="@string/email_address_text"
         android:autofillHints="emailAddress"
         android:layout_marginBottom="20dp"
-        style="@style/tv_input"/>
+        style="@style/et_input"/>
 
     <EditText
         android:layout_width="300dp"
@@ -29,7 +29,7 @@
         android:inputType="textPassword"
         android:hint="@string/password_text"
         android:autofillHints="password"
-        style="@style/tv_input"/>
+        style="@style/et_input"/>
 
     <Button
         android:id="@+id/btn_connection"

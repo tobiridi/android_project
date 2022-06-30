@@ -4,10 +4,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     public static final int MAIN_ACTIVITY_CODE = 1;
@@ -22,6 +28,22 @@ public class MainActivity extends AppCompatActivity {
              * else display a toast
              */
             Toast.makeText(MainActivity.this, "Connection ...", Toast.LENGTH_SHORT).show();
+
+            //test de trouver les coordonnées GPS depuis une adresse
+
+
+            Geocoder geocoder = new Geocoder(MainActivity.this);
+            try {
+                String address = "37 Rue des Alouettes, Courcelles, 6180";
+                Address gps_address = geocoder.getFromLocationName(address,1).get(0);
+                System.out.println(gps_address);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            Intent object_list_intent = new Intent(MainActivity.this, ObjectListActivity.class);
+            startActivity(object_list_intent);
         }
     };
 

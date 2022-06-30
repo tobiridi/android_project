@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Exam project</string>
     <string name="connection_title">Connection</string>
+    <string name="object_title">Objects list</string>
     <string name="inscription_title" translatable="false">Inscription</string>
     <!-- input text -->
     <string name="email_address_text" translatable="false">Email</string>
@@ -10,8 +11,14 @@
     <string name="city_text">City</string>
     <string name="postal_code_text">Postal code</string>
     <string name="postal_address_text">Postal address</string>
+    <string name="street_number_text">Street number</string>
     <string name="cancel_text">Cancel</string>
     <string name="confirm_text">Confirm</string>
+    <string name="max_distance_text">Maximum distance</string>
+    <string name="refresh_text">Refresh</string>
+    <string name="logout_text">Logout</string>
+    <string name="new_object_text">New object</string>
+    <string name="tracking_objects_text">Tracking objects</string>
     <!-- messages -->
     <string name="user_success_message">User created</string>
 </resources>

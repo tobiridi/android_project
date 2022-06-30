@@ -32,7 +32,8 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="tv_input">
+    <!-- editText style -->
+    <style name="et_input">
         <item name="android:textSize">20sp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textAlignment">center</item>

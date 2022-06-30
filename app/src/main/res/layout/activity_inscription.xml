@@ -31,7 +31,7 @@
                 android:inputType="text"
                 android:hint="@string/username_text"
                 android:autofillHints="username"
-                style="@style/tv_input"
+                style="@style/et_input"
                 android:layout_margin="10dp"/>
 
             <EditText
@@ -41,7 +41,7 @@
                 android:inputType="textEmailAddress"
                 android:hint="@string/email_address_text"
                 android:autofillHints="emailAddress"
-                style="@style/tv_input"
+                style="@style/et_input"
                 android:layout_margin="10dp"/>
 
             <EditText
@@ -51,7 +51,7 @@
                 android:inputType="textPassword"
                 android:hint="@string/password_text"
                 android:autofillHints="password"
-                style="@style/tv_input"
+                style="@style/et_input"
                 android:layout_margin="10dp"/>
 
             <EditText
@@ -61,18 +61,35 @@
                 android:inputType="textPassword"
                 android:hint="@string/confirm_password_text"
                 android:autofillHints="password"
-                style="@style/tv_input"
+                style="@style/et_input"
                 android:layout_margin="10dp"/>
 
-            <EditText
-                android:id="@+id/et_postal_address"
-                android:layout_width="300dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:hint="@string/postal_address_text"
-                android:autofillHints="postalAddress"
-                style="@style/tv_input"
-                android:layout_margin="10dp"/>
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/et_postal_address"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress"
+                    android:hint="@string/postal_address_text"
+                    android:autofillHints="postalAddress"
+                    style="@style/et_input"
+                    android:layout_margin="10dp"/>
+
+                <EditText
+                    android:id="@+id/et_street_number"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:hint="@string/street_number_text"
+                    android:autofillHints="postalAddress"
+                    style="@style/et_input" />
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/et_postal_code"
@@ -81,7 +98,7 @@
                 android:inputType="number"
                 android:hint="@string/postal_code_text"
                 android:autofillHints="postalCode"
-                style="@style/tv_input"
+                style="@style/et_input"
                 android:layout_margin="10dp"/>
 
             <EditText
@@ -91,7 +108,7 @@
                 android:inputType="textAutoCorrect"
                 android:hint="@string/city_text"
                 android:autofillHints="name"
-                style="@style/tv_input"
+                style="@style/et_input"
                 android:layout_margin="10dp"/>
 
             <LinearLayout

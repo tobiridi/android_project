@@ -11,4 +11,11 @@
     <string name="confirm_password_text">Confirmer le mot de passe</string>
     <string name="postal_address_text">Addresse postale</string>
     <string name="username_text">Nom d\'utilisateur</string>
+    <string name="object_title">Liste des objets</string>
+    <string name="max_distance_text">Distance maximum</string>
+    <string name="refresh_text">Actualiser</string>
+    <string name="new_object_text">Nouveau objet</string>
+    <string name="tracking_objects_text">Suivi des objets</string>
+    <string name="logout_text">Déconnexion</string>
+    <string name="street_number_text">Numéro de rue</string>
 </resources>

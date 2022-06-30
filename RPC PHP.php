@@ -4,12 +4,14 @@
 		$dbh = new PDO("pgsql:host=localhost; port=5433; dbname=js2118; user=js2118; password=brofi48fraicro");
 
 		// User inscription
-		if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['postaladdress']) &&isset($_POST['postalcode']) && isset($_POST['city'])){
+		if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['postaladdress']) && 
+		   isset($_POST['street_number']) && isset($_POST['postalcode']) && isset($_POST['city'])){
 
 			$passwordHash = hash("sha256", $_POST['password']);
 
-			$stm = $dbh -> prepare("INSERT INTO public.user (username,email,password,postal_address,postal_code,city) VALUES (?,?,?,?,?,?)");
-            $stm -> execute(array($_POST['username'], $_POST['email'],$passwordHash,$_POST['postaladdress'],$_POST['postalcode'],$_POST['city']));
+			$stm = $dbh -> prepare("INSERT INTO public.user (username,email,password,postal_address,postal_code,city,street_number) VALUES (?,?,?,?,?,?,?)");
+            $stm -> execute(array($_POST['username'], $_POST['email'],$passwordHash,$_POST['postaladdress'],
+            					  $_POST['postalcode'],$_POST['city'],$_POST['street_number']));
 
 			exit();
 			//FINISH
