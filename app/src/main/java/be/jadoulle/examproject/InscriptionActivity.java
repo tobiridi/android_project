@@ -31,7 +31,7 @@ public class InscriptionActivity extends AppCompatActivity {
     private View.OnClickListener confirm_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            //get all elements
+            //get all view's elements
             EditText et_username = findViewById(R.id.et_username);
             EditText et_email = findViewById(R.id.et_email);
             EditText et_password = findViewById(R.id.et_password);
@@ -88,14 +88,16 @@ public class InscriptionActivity extends AppCompatActivity {
 
         EditText et_confirm_password = findViewById(R.id.et_confirm_password);
         et_confirm_password.setOnFocusChangeListener(focus_listener);
+
     }
 
     //methods called by AsyncTask
-    public void successUserCreation(String message){
+    public void userCreation(String message) {
         //TODO : if user is created or not
         Intent success_intent = new Intent();
         success_intent.putExtra("confirm_message", "message");
         setResult(RESULT_OK, success_intent);
         finish();
+
     }
 }

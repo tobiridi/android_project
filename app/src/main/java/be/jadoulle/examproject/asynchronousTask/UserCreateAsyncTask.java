@@ -47,7 +47,7 @@ public class UserCreateAsyncTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String message) {
         super.onPostExecute(message);
-        this.activity.successUserCreation(message);
+        this.activity.userCreation(message);
     }
 
     //verification methods

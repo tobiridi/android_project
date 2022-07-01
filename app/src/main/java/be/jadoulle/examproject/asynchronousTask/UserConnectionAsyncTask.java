@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import be.jadoulle.examproject.MainActivity;
 
-public class UserConnectionAsyncTask extends AsyncTask<Void, Void, Void> {
+public class UserConnectionAsyncTask extends AsyncTask<String, Void, Void> {
     private MainActivity activity;
 
     public UserConnectionAsyncTask(MainActivity activity){
@@ -14,8 +14,8 @@ public class UserConnectionAsyncTask extends AsyncTask<Void, Void, Void> {
     }
 
     @Override
-    protected Void doInBackground(Void... voids) {
-        //TODO : check if the user can be connected
+    protected Void doInBackground(String... strings) {
+        //TODO : check if the user can be connected, rpc php ready
         return null;
     }
 
@@ -23,5 +23,6 @@ public class UserConnectionAsyncTask extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void unused) {
         super.onPostExecute(unused);
         //TODO : call activity method
+        this.activity.changeActivity();
     }
 }

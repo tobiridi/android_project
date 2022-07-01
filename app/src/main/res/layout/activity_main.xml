@@ -15,6 +15,7 @@
         android:layout_marginBottom="80dp"/>
 
     <EditText
+        android:id="@+id/et_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
@@ -24,6 +25,7 @@
         style="@style/et_input"/>
 
     <EditText
+        android:id="@+id/et_password"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"

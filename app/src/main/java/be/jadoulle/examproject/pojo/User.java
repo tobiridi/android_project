@@ -70,7 +70,7 @@ public class User implements Serializable {
     }
 
     //CONSTRUCTOR
-    public User(){
+    public User() {
 
     }
 

@@ -9,11 +9,14 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+
+import be.jadoulle.examproject.asynchronousTask.UserConnectionAsyncTask;
 
 public class MainActivity extends AppCompatActivity {
     public static final int MAIN_ACTIVITY_CODE = 1;
@@ -21,17 +24,20 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener connection_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent connection_intent = new Intent();
             //TODO : use async task to verif in db, script php ready
+            EditText et_email = findViewById(R.id.et_email);
+            EditText et_password = findViewById(R.id.et_password);
+            new UserConnectionAsyncTask(MainActivity.this).execute(
+                    et_email.getText().toString(),
+                    et_password.getText().toString()
+            );
             /**
              * if correct => connect the user
              * else display a toast
              */
             Toast.makeText(MainActivity.this, "Connection ...", Toast.LENGTH_SHORT).show();
 
-            //test de trouver les coordonnées GPS depuis une adresse
-
-
+            //test de trouver les coordonnées GPS depuis une adresse, fonctionne
             Geocoder geocoder = new Geocoder(MainActivity.this);
             try {
                 String address = "37 Rue des Alouettes, Courcelles, 6180";
@@ -41,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-
-            Intent object_list_intent = new Intent(MainActivity.this, ObjectListActivity.class);
-            startActivity(object_list_intent);
         }
     };
 
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn_connection.setOnClickListener(connection_listener);
         btn_inscription.setOnClickListener(inscription_listener);
+
     }
 
     @Override
@@ -79,5 +83,10 @@ public class MainActivity extends AppCompatActivity {
         else{
             Toast.makeText(MainActivity.this, "Message ...", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void changeActivity() {
+        Intent object_list_intent = new Intent(MainActivity.this, ObjectListActivity.class);
+        startActivity(object_list_intent);
     }
 }

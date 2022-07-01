@@ -1,24 +1,28 @@
 <?php
 	try {
-		// Connection to DB
+		//Connection to DB
 		$dbh = new PDO("pgsql:host=localhost; port=5433; dbname=js2118; user=js2118; password=brofi48fraicro");
 
-		// User inscription
-		if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['postaladdress']) && 
-		   isset($_POST['street_number']) && isset($_POST['postalcode']) && isset($_POST['city'])){
+		//Configuration HTTP response
+		header('Content-Type: application/json; charset=utf-8');
+
+		//User inscription
+		if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['postal_address']) && 
+		   isset($_POST['street_number']) && isset($_POST['postal_code']) && isset($_POST['city'])){
 
 			$passwordHash = hash("sha256", $_POST['password']);
 
 			$stm = $dbh -> prepare("INSERT INTO public.user (username,email,password,postal_address,postal_code,city,street_number) VALUES (?,?,?,?,?,?,?)");
-            $stm -> execute(array($_POST['username'], $_POST['email'],$passwordHash,$_POST['postaladdress'],
-            					  $_POST['postalcode'],$_POST['city'],$_POST['street_number']));
+            $stm -> execute(array($_POST['username'], $_POST['email'],$passwordHash,$_POST['postal_address'],
+            					  $_POST['postal_code'],$_POST['city'],$_POST['street_number']));
 
 			exit();
 			//FINISH
 		}
 
-		// User connection
+		//User connection
 		if(isset($_POST['email']) && isset($_POST['password'])){
+
 			$passwordHash = hash("sha256", $_POST['password']);
 
 			$stm = $dbh -> prepare("SELECT id,username,email,password,postal_address,postal_code,city FROM public.user WHERE email = ? and password = ?");
@@ -33,12 +37,50 @@
 	        //FINISH
 		}
 
-		// Create an object
-		// Select user objects
-		// Add object photos
-		// Add following object
-		// Select following object
-		// Update following object
+		//Create a sale object
+		if(isset($_POST['object_name']) && isset($_POST['object_type']) && isset($_POST['price']) && 
+		   isset($_POST['object_description']) && isset($_POST['id_user'])){
+
+			$stm = $dbh -> prepare("INSERT INTO public.sale_object (object_name,object_type,price,object_description,id_user) VALUES (?,?,?,?,?)");
+            $stm -> execute(array($_POST['object_name'],$_POST['object_type'],$_POST['price'],$_POST['object_description'],$_POST['id_user']));
+
+            echo "object created !";
+
+            exit();
+            //FINISH
+		}
+
+		//Add tracking object
+		if(isset($_POST['id_user']) && isset($_POST['id_sale_object'])){
+			$stm = $dbh -> prepare("INSERT INTO public.object_user_tracking (id_user,id_sale_object) VALUES (?,?)");
+			$stm -> execute(array($_POST['id_user'],$_POST['id_sale_object']));
+
+	        echo "object add to tracking !";
+
+	        exit();
+	        //FINISH
+		}
+
+		//Select user's sale objects
+		if(isset($_POST['id_user'])){
+			$stm = $dbh -> prepare("SELECT id,object_name,object_type,price,object_description FROM public.sale_object WHERE id_user = ?");
+			$stm -> execute(array($_POST['id_user']));
+
+			$tabjson = [];
+
+			while($value = $stm -> fetch(PDO:: FETCH_ASSOC)){
+	            array_push($tabjson, $value);
+	        }
+
+	        echo json_encode($tabjson);
+
+	        exit();
+	        //FINISH
+		}
+
+		//Add object photos
+		//Select tracking object
+		//Update tracking object
 
 	} catch (Exception $e) {
 		echo ('Erreur: '.$e -> getMessage());

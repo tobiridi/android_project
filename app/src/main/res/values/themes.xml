@@ -16,13 +16,13 @@
     <!-- button style -->
     <style name="btn_cancel">
         <item name="android:textSize">20sp</item>
-        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_margin">10dp</item>
         <item name="android:backgroundTint">@color/red</item>
     </style>
 
     <style name="btn_confirm">
         <item name="android:textSize">20sp</item>
-        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_margin">10dp</item>
         <item name="backgroundTint">@color/green</item>
     </style>
 
@@ -37,6 +37,7 @@
         <item name="android:textSize">20sp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:scrollbars">horizontal</item>
     </style>
 
 </resources>
