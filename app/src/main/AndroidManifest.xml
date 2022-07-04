@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="be.jadoulle.examproject">
 
+    <!-- permet à l'application d'utiliser internet -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- permet à l'application d'utiliser la camera, peut être inutile -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- localisation par wifi, moins prècis et consomme moins -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- localisation par GPS, plus prècis, obliger d'avoir les 2 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +19,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamProject">
+        <activity
+            android:name=".TrackingObjectActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewSaleObjectActivity"
+            android:exported="true" />
         <activity
             android:name=".ObjectListActivity"
             android:exported="true" />

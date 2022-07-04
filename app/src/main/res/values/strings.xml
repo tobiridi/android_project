@@ -3,6 +3,8 @@
     <string name="connection_title">Connection</string>
     <string name="object_title">Objects list</string>
     <string name="inscription_title" translatable="false">Inscription</string>
+    <string name="tracking_objects_title">Tracking objects</string>
+    <string name="new_sale_object_title">New sale object</string>
     <!-- input text -->
     <string name="email_address_text" translatable="false">Email</string>
     <string name="username_text">Username</string>
@@ -19,6 +21,12 @@
     <string name="logout_text">Logout</string>
     <string name="new_object_text">New object</string>
     <string name="tracking_objects_text">Tracking objects</string>
+    <string name="object_name_text">Object name</string>
+    <string name="object_type_text">Object type</string>
+    <string name="object_description_text">Object description</string>
+    <string name="object_price_text">Price</string>
     <!-- messages -->
     <string name="user_success_message">User created</string>
+    <string name="cancel_message">Cancel</string>
+    <string name="logout_message">Logout</string>
 </resources>

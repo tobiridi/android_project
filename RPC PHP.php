@@ -17,7 +17,6 @@
             					  $_POST['postal_code'],$_POST['city'],$_POST['street_number']));
 
 			exit();
-			//FINISH
 		}
 
 		//User connection
@@ -33,8 +32,8 @@
 	        else{
 	        	echo ('{"errorMessage" : "User not found!"}');
 	        }
+
 	        exit();
-	        //FINISH
 		}
 
 		//Create a sale object
@@ -47,7 +46,6 @@
             echo "object created !";
 
             exit();
-            //FINISH
 		}
 
 		//Add tracking object
@@ -58,7 +56,6 @@
 	        echo "object add to tracking !";
 
 	        exit();
-	        //FINISH
 		}
 
 		//Select user's sale objects
@@ -75,15 +72,20 @@
 	        echo json_encode($tabjson);
 
 	        exit();
-	        //FINISH
 		}
 
+		//Sale objects around the user
 		//Add object photos
 		//Select tracking object
 		//Update tracking object
 
+
+		//test call rpc from android
+		echo '{"test" : "valeur retourner par le rpc php"}';
+
 	} catch (Exception $e) {
 		echo ('Erreur: '.$e -> getMessage());
+		
 		exit();
 	}
 

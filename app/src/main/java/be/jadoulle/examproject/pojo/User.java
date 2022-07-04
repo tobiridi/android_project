@@ -9,7 +9,7 @@ public class User implements Serializable {
     private String email;
     private String password;
     private String postalAddress;
-    private String street_number;
+    private int street_number;
     private String postalCode;
     private String city;
 
@@ -48,10 +48,10 @@ public class User implements Serializable {
         this.postalAddress = postalAddress;
     }
 
-    public String getStreet_number() {
+    public int getStreet_number() {
         return street_number;
     }
-    public void setStreet_number(String street_number) {
+    public void setStreet_number(int street_number) {
         this.street_number = street_number;
     }
 
@@ -75,7 +75,7 @@ public class User implements Serializable {
     }
 
     public User(int id, String username, String email, String password, String postalAddress,
-                String street_number,String postalCode, String city) {
+                int street_number,String postalCode, String city) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -87,7 +87,7 @@ public class User implements Serializable {
     }
 
     public User(String username, String email, String password, String postalAddress,
-                String street_number,String postalCode, String city) {
+                int street_number,String postalCode, String city) {
         this.username = username;
         this.email = email;
         this.password = password;

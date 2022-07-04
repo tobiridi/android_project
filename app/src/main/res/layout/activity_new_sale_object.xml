@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewSaleObjectActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/new_sale_object_title"
+        style="@style/tv_title"
+        android:layout_marginBottom="20dp"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_object_name"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/object_name_text"
+                style="@style/et_input"
+                android:layout_margin="10dp"/>
+
+            <EditText
+                android:id="@+id/et_object_type"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/object_type_text"
+                style="@style/et_input"
+                android:layout_margin="10dp"/>
+
+            <EditText
+                android:id="@+id/et_object_description"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:hint="@string/object_description_text"
+                style="@style/et_input"
+                android:layout_margin="10dp"/>
+
+            <EditText
+                android:id="@+id/et_object_price"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="@string/object_price_text"
+                style="@style/et_input"
+                android:layout_margin="10dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel_text"
+                    style="@style/btn_cancel"/>
+
+                <Button
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirm_text"
+                    style="@style/btn_confirm"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

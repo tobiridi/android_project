@@ -18,4 +18,12 @@
     <string name="tracking_objects_text">Suivi des objets</string>
     <string name="logout_text">Déconnexion</string>
     <string name="street_number_text">Numéro de rue</string>
+    <string name="cancel_message">Annuler</string>
+    <string name="logout_message">Vous êtes déconnecté</string>
+    <string name="tracking_objects_title">Suivi des objets</string>
+    <string name="new_sale_object_title">Nouveau objet de vente</string>
+    <string name="object_name_text">Nom de l\'objet</string>
+    <string name="object_type_text">Type d\'objet</string>
+    <string name="object_description_text">Description</string>
+    <string name="object_price_text">Prix</string>
 </resources>

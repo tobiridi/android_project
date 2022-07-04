@@ -22,7 +22,7 @@ public class InscriptionActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent back_intent = new Intent();
-            back_intent.putExtra("cancel_message", getString(R.string.cancel_text));
+            back_intent.putExtra("cancel_message", getString(R.string.cancel_message));
             setResult(RESULT_CANCELED, back_intent);
             finish();
         }
@@ -86,6 +86,7 @@ public class InscriptionActivity extends AppCompatActivity {
         btn_cancel.setOnClickListener(cancel_listener);
         btn_confirm.setOnClickListener(confirm_listener);
 
+        //TODO : temp
         EditText et_confirm_password = findViewById(R.id.et_confirm_password);
         et_confirm_password.setOnFocusChangeListener(focus_listener);
 
@@ -95,7 +96,7 @@ public class InscriptionActivity extends AppCompatActivity {
     public void userCreation(String message) {
         //TODO : if user is created or not
         Intent success_intent = new Intent();
-        success_intent.putExtra("confirm_message", "message");
+        success_intent.putExtra("confirm_message", "toast user created");
         setResult(RESULT_OK, success_intent);
         finish();
 

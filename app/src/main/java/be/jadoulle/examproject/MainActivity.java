@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Locale;
 
 import be.jadoulle.examproject.asynchronousTask.UserConnectionAsyncTask;
+import be.jadoulle.examproject.pojo.User;
 
 public class MainActivity extends AppCompatActivity {
     public static final int MAIN_ACTIVITY_CODE = 1;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     et_password.getText().toString()
             );
             /**
-             * if correct => connect the user
+             * if correct => connect the user and pass the user to "ObjectListActivity"
              * else display a toast
              */
             Toast.makeText(MainActivity.this, "Connection ...", Toast.LENGTH_SHORT).show();
@@ -74,19 +75,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(data != null && resultCode == RESULT_OK){
+        if(data != null && resultCode == RESULT_OK && requestCode == MAIN_ACTIVITY_CODE) {
             Toast.makeText(MainActivity.this, data.getStringExtra("confirm_message"), Toast.LENGTH_SHORT).show();
         }
-        else if(data != null && resultCode == RESULT_CANCELED){
+        else if(data != null && resultCode == RESULT_CANCELED && requestCode == MAIN_ACTIVITY_CODE) {
             Toast.makeText(MainActivity.this, data.getStringExtra("cancel_message"), Toast.LENGTH_SHORT).show();
         }
-        else{
+        else {
             Toast.makeText(MainActivity.this, "Message ...", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void changeActivity() {
+    //TODO : change name, go to object list activity
+    public void changeActivity(User user) {
         Intent object_list_intent = new Intent(MainActivity.this, ObjectListActivity.class);
-        startActivity(object_list_intent);
+        object_list_intent.putExtra("user",user);
+        startActivityForResult(object_list_intent,MAIN_ACTIVITY_CODE);
     }
 }
