@@ -8,17 +8,14 @@ public class User implements Serializable {
     private String username;
     private String email;
     private String password;
-    private String postalAddress;
+    private String postal_address;
     private int street_number;
-    private String postalCode;
+    private String postal_code;
     private String city;
 
     public int getId() {
         return id;
     }
-//    public void setId(int id) {
-//        this.id = id;
-//    }
 
     public String getUsername() {
         return username;
@@ -41,11 +38,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getPostalAddress() {
-        return postalAddress;
+    public String getPostal_address() {
+        return postal_address;
     }
-    public void setPostalAddress(String postalAddress) {
-        this.postalAddress = postalAddress;
+    public void setPostal_address(String postal_address) {
+        this.postal_address = postal_address;
     }
 
     public int getStreet_number() {
@@ -55,11 +52,11 @@ public class User implements Serializable {
         this.street_number = street_number;
     }
 
-    public String getPostalCode() {
-        return postalCode;
+    public String getPostal_code() {
+        return postal_code;
     }
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setPostal_code(String postal_code) {
+        this.postal_code = postal_code;
     }
 
     public String getCity() {
@@ -74,26 +71,26 @@ public class User implements Serializable {
 
     }
 
-    public User(int id, String username, String email, String password, String postalAddress,
-                int street_number,String postalCode, String city) {
+    public User(int id, String username, String email, String password, String postal_address,
+                int street_number, String postal_code, String city) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.postalAddress = postalAddress;
+        this.postal_address = postal_address;
         this.street_number = street_number;
-        this.postalCode = postalCode;
+        this.postal_code = postal_code;
         this.city = city;
     }
 
-    public User(String username, String email, String password, String postalAddress,
-                int street_number,String postalCode, String city) {
+    public User(String username, String email, String password, String postal_address,
+                int street_number, String postal_code, String city) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.postalAddress = postalAddress;
+        this.postal_address = postal_address;
         this.street_number = street_number;
-        this.postalCode = postalCode;
+        this.postal_code = postal_code;
         this.city = city;
     }
 
@@ -105,9 +102,9 @@ public class User implements Serializable {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", postalAddress='" + postalAddress + '\'' +
+                ", postal_address='" + postal_address + '\'' +
                 ", street_number='" + street_number + '\'' +
-                ", postalCode='" + postalCode + '\'' +
+                ", postal_code='" + postal_code + '\'' +
                 ", city='" + city + '\'' +
                 '}';
     }

@@ -1,8 +1,13 @@
 package be.jadoulle.examproject.asynchronousTask;
 
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,6 +16,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -20,10 +26,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 import be.jadoulle.examproject.MainActivity;
+import be.jadoulle.examproject.R;
 import be.jadoulle.examproject.pojo.User;
 import be.jadoulle.examproject.utilitary.GlobalSettings;
 
-public class UserConnectionAsyncTask extends AsyncTask<String, Void, User> {
+public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
     private MainActivity activity;
 
     public UserConnectionAsyncTask(MainActivity activity){
@@ -31,87 +38,75 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, User> {
     }
 
     @Override
-    protected User doInBackground(String... strings) {
-        //test connection to rpc php
-        //indique l'url de la machine à contactez
+    protected String doInBackground(String... strings) {
+        String jsonString = null;
+        //connection to rpc php
         try {
-            //on peut créer une classe qui va contenir plusieurs variable statiques accessible dans tout le projet
-            //comme par exemple l'url ru rpc a contactez
-            //les paramètres en get sont envoyé en ?param=val&parm=val
+            //GET parameters are sent via a string : ?param=val&param=val
             URL url = new URL(GlobalSettings.urlServer);
-            //permet d'établir la connexion avec des paramètres
+
+            //established the connection with parameters
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(5000); //prècise le timeout
-            //accède en GET au serveur
+            connection.setConnectTimeout(5000);
+            //GET HTTP request to server
             //connection.setRequestMethod("GET");
 
-            //accède en POST au serveur
+            //POST HTTP request to server
             connection.setRequestMethod("POST");
             OutputStream outputStream = connection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, StandardCharsets.UTF_8));
-            //on met les paramètres
-            String parameters = "text=coucuo&nombre=15";
+            //put parameters in POST request
+            String parameters = "email=" + strings[0] + "&password=" + strings[1];
             bufferedWriter.write(parameters);
             bufferedWriter.flush();
             bufferedWriter.close();
             outputStream.close();
 
-            connection.connect(); //établi la connexion
-            int responseCode = connection.getResponseCode(); //le code retourner par le serveur (200, 300, 400, ...)
-            if (responseCode == 200){
-                //lire les données reçues par le serveur
+            //the connection is established
+            connection.connect();
+
+            if (connection.getResponseCode() == 200){
+                //read data send from the server
                 InputStream inputStream = connection.getInputStream();
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
                 Scanner scanner = new Scanner(inputStreamReader);
                 scanner.useDelimiter("\n");
+
                 while (scanner.hasNext()){
-                    System.out.println(scanner.next());
+                    jsonString += scanner.next();
                 }
                 scanner.close();
-                return new User();
-
             }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            System.out.println("erreur url");
-            return null;
+
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("erreur autre");
         }
 
-
-
-
-        //TODO : check if the user can be connected, rpc php ready
-        //TODO : return null if the user is not found
-        User user = null;
-
-        //test temp
-        user = new User(3,"toto","tony@hotmail.be","tony",
-                "rue de totoutout",23,"4567","Charleroi");
-        return user;
+        return jsonString;
     }
 
     @Override
-    protected void onPostExecute(User user) {
-        //récupèrer les infos au format json
+    protected void onPostExecute(String jsonString) {
+        super.onPostExecute(jsonString);
+
+        String text = null;
         try {
-            JSONObject jsonObject = new JSONObject(user.toString());
-            //vérifier si une clé se trouve dans le json
-            if(jsonObject.isNull("test")){
-                System.out.println("Erreur dans le json");
+            JSONObject jsonObject = new JSONObject(jsonString);
+            if (!jsonObject.isNull("id")){
+                //transform JSON into object
+                User user = new Gson().fromJson(jsonObject.toString(), User.class);
+                this.activity.userSaleObjectList(user);
             }
-            //faire des get sur "jsonObject" pour récupèrer des infos
+            else if (!jsonObject.isNull("errorMessage")){
+                text = this.activity.getString(R.string.login_user_not_found_message);
+            }
+            else{
+                text = this.activity.getString(R.string.login_error_message);
+            }
+            Toast.makeText(this.activity, text, Toast.LENGTH_SHORT).show();
 
         } catch (JSONException e) {
             e.printStackTrace();
-            System.out.println("Erreur dans le json");
         }
-
-
-        super.onPostExecute(user);
-        //TODO : call activity method
-        this.activity.changeActivity(user);
     }
 }

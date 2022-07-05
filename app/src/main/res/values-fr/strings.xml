@@ -26,4 +26,6 @@
     <string name="object_type_text">Type d\'objet</string>
     <string name="object_description_text">Description</string>
     <string name="object_price_text">Prix</string>
+    <string name="login_error_message">Impossible de ce connecter</string>
+    <string name="login_user_not_found_message">Mauvais email et/ou mot de passe</string>
 </resources>

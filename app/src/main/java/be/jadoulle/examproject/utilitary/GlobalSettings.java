@@ -2,8 +2,8 @@ package be.jadoulle.examproject.utilitary;
 
 public final class GlobalSettings {
 
-    public static String urlServerEndor = "http://cours.endor.be/~js2118/android%20test/RPC%20PHP.php";
-    public static String urlServer = "http://localhost/android/web_service.php";
+    //"http://localhost/android/web_service.php";
+    public static String urlServer = "http://cours.endor.be/~js2118/android%20test/RPC%20PHP.php";
     public static String hostUrl = "http://localhost/android/";
 
 //    public static PublicKey publicKey = new PublicKey() {

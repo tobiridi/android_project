@@ -16,6 +16,7 @@
             $stm -> execute(array($_POST['username'], $_POST['email'],$passwordHash,$_POST['postal_address'],
             					  $_POST['postal_code'],$_POST['city'],$_POST['street_number']));
 
+            header('HTTP/1.1 201 Created');
 			exit();
 		}
 
@@ -24,15 +25,17 @@
 
 			$passwordHash = hash("sha256", $_POST['password']);
 
-			$stm = $dbh -> prepare("SELECT id,username,email,password,postal_address,postal_code,city FROM public.user WHERE email = ? and password = ?");
+			$stm = $dbh -> prepare("SELECT id,username,email,password,postal_address,postal_code,city,street_number FROM public.user WHERE email = ? and password = ?");
 	        $stm -> execute(array($_POST['email'], $passwordHash));
 	        if($value = $stm -> fetch(PDO:: FETCH_ASSOC)){
+	        	header('HTTP/1.1 200 OK');
 	            echo (json_encode($value));
 	        }
 	        else{
+	        	header('HTTP/1.1 404 Not Found');
 	        	echo ('{"errorMessage" : "User not found!"}');
 	        }
-
+	        
 	        exit();
 		}
 
@@ -43,8 +46,8 @@
 			$stm = $dbh -> prepare("INSERT INTO public.sale_object (object_name,object_type,price,object_description,id_user) VALUES (?,?,?,?,?)");
             $stm -> execute(array($_POST['object_name'],$_POST['object_type'],$_POST['price'],$_POST['object_description'],$_POST['id_user']));
 
-            echo "object created !";
 
+            header('HTTP/1.1 201 Created');
             exit();
 		}
 
@@ -53,8 +56,7 @@
 			$stm = $dbh -> prepare("INSERT INTO public.object_user_tracking (id_user,id_sale_object) VALUES (?,?)");
 			$stm -> execute(array($_POST['id_user'],$_POST['id_sale_object']));
 
-	        echo "object add to tracking !";
-
+	        header('HTTP/1.1 201 Created');
 	        exit();
 		}
 
@@ -70,6 +72,7 @@
 	        }
 
 	        echo json_encode($tabjson);
+	        header('HTTP/1.1 200 OK');
 
 	        exit();
 		}
@@ -80,11 +83,9 @@
 		//Update tracking object
 
 
-		//test call rpc from android
-		echo '{"test" : "valeur retourner par le rpc php"}';
-
 	} catch (Exception $e) {
 		echo ('Erreur: '.$e -> getMessage());
+		header('HTTP/1.1 500 Internal Server Error');
 		
 		exit();
 	}

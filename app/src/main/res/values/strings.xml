@@ -27,6 +27,8 @@
     <string name="object_price_text">Price</string>
     <!-- messages -->
     <string name="user_success_message">User created</string>
+    <string name="login_error_message">impossible to be connected</string>
+    <string name="login_user_not_found_message">Wrong email and/or password</string>
     <string name="cancel_message">Cancel</string>
     <string name="logout_message">Logout</string>
 </resources>
