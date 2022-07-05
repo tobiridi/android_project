@@ -29,6 +29,7 @@ import be.jadoulle.examproject.MainActivity;
 import be.jadoulle.examproject.R;
 import be.jadoulle.examproject.pojo.User;
 import be.jadoulle.examproject.utilitary.GlobalSettings;
+import be.jadoulle.examproject.utilitary.Utilities;
 
 public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
     private MainActivity activity;
@@ -39,49 +40,21 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String jsonString = null;
+        String jsonString = "";
         //connection to rpc php
         try {
-            //GET parameters are sent via a string : ?param=val&param=val
-            URL url = new URL(GlobalSettings.urlServer);
-
-            //established the connection with parameters
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(5000);
-            //GET HTTP request to server
-            //connection.setRequestMethod("GET");
-
-            //POST HTTP request to server
-            connection.setRequestMethod("POST");
-            OutputStream outputStream = connection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, StandardCharsets.UTF_8));
-            //put parameters in POST request
             String parameters = "email=" + strings[0] + "&password=" + strings[1];
-            bufferedWriter.write(parameters);
-            bufferedWriter.flush();
-            bufferedWriter.close();
-            outputStream.close();
+            HttpURLConnection connection = Utilities.httpPostMethod(parameters);
 
-            //the connection is established
-            connection.connect();
-
-            if (connection.getResponseCode() == 200){
+            if (connection.getResponseCode() == 200 || connection.getResponseCode() == 404){
                 //read data send from the server
-                InputStream inputStream = connection.getInputStream();
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-                Scanner scanner = new Scanner(inputStreamReader);
-                scanner.useDelimiter("\n");
-
-                while (scanner.hasNext()){
-                    jsonString += scanner.next();
-                }
-                scanner.close();
+                jsonString = Utilities.readServerJsonData(connection);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        //System.out.println(jsonString);
         return jsonString;
     }
 
@@ -100,13 +73,12 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
             else if (!jsonObject.isNull("errorMessage")){
                 text = this.activity.getString(R.string.login_user_not_found_message);
             }
-            else{
-                text = this.activity.getString(R.string.login_error_message);
-            }
-            Toast.makeText(this.activity, text, Toast.LENGTH_SHORT).show();
 
         } catch (JSONException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            text = this.activity.getString(R.string.login_error_message);
         }
+
+        Toast.makeText(this.activity, text, Toast.LENGTH_SHORT).show();
     }
 }

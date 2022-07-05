@@ -18,7 +18,7 @@ public class ObjectListActivity extends AppCompatActivity {
     private View.OnClickListener logout_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent back_intent = new Intent();
+            Intent back_intent = getIntent();
             back_intent.putExtra("cancel_message", getString(R.string.logout_message));
             setResult(RESULT_CANCELED, back_intent);
             finish();
@@ -43,21 +43,14 @@ public class ObjectListActivity extends AppCompatActivity {
         }
     };
 
-    private View.OnClickListener details_object_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object_list);
 
         //get the user connected
-        Intent mainIntent = getIntent();
-        ObjectListActivity.this.user = (User) mainIntent.getSerializableExtra("user");
+        Intent main_intent = getIntent();
+        ObjectListActivity.this.user = (User) main_intent.getSerializableExtra("user");
         System.out.println(ObjectListActivity.this.user);
 
         Button btn_logout = findViewById(R.id.btn_logout);
