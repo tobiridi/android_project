@@ -10,14 +10,16 @@
 		if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['postal_address']) && 
 		   isset($_POST['street_number']) && isset($_POST['postal_code']) && isset($_POST['city'])){
 
-			$passwordHash = hash("sha256", $_POST['password']);
+		   	if (is_numeric($_POST['street_number'])) {
+		   		$passwordHash = hash("sha256", $_POST['password']);
 
-			$stm = $dbh -> prepare("INSERT INTO public.user (username,email,password,postal_address,postal_code,city,street_number) VALUES (?,?,?,?,?,?,?)");
-            $stm -> execute(array($_POST['username'], $_POST['email'],$passwordHash,$_POST['postal_address'],
-            					  $_POST['postal_code'],$_POST['city'],$_POST['street_number']));
+				$stm = $dbh -> prepare("INSERT INTO public.user (username,email,password,postal_address,postal_code,city,street_number) VALUES (?,?,?,?,?,?,?)");
+	            $stm -> execute(array($_POST['username'], $_POST['email'],$passwordHash,$_POST['postal_address'],
+	            					  $_POST['postal_code'],$_POST['city'],$_POST['street_number']));
 
-            header('HTTP/1.1 201 Created');
-			exit();
+	            header('HTTP/1.1 201 Created');
+				exit();
+		   	}
 		}
 
 		//User connection
@@ -41,15 +43,17 @@
 		}
 
 		//Create a sale object
-		if(isset($_POST['object_name']) && isset($_POST['object_type']) && isset($_POST['price']) && 
-		   isset($_POST['object_description']) && isset($_POST['id_user'])){
+		if(isset($_POST['object_name']) && isset($_POST['object_type']) && isset($_POST['object_description']) && 
+		   isset($_POST['price']) && isset($_POST['id_user']) && isset($_POST['longitude']) && isset($_POST['latitude'])){
 
-			$stm = $dbh -> prepare("INSERT INTO public.sale_object (object_name,object_type,price,object_description,id_user) VALUES (?,?,?,?,?)");
-            $stm -> execute(array($_POST['object_name'],$_POST['object_type'],$_POST['price'],$_POST['object_description'],$_POST['id_user']));
+		   	if (is_numeric($_POST['price']) && is_numeric($_POST['id_user']) && is_numeric($_POST['longitude']) && is_numeric($_POST['latitude'])) {
+		   		$stm = $dbh -> prepare("INSERT INTO public.sale_object (object_name,object_type,price,object_description,id_user,longitude,latitude) VALUES (?,?,?,?,?,?,?)");
+	            $stm -> execute(array($_POST['object_name'],$_POST['object_type'],$_POST['price'],$_POST['object_description'],$_POST['id_user'],$_POST['longitude'],$_POST['latitude']));
 
-
-            header('HTTP/1.1 201 Created');
-            exit();
+            	header('HTTP/1.1 201 Created');
+            	exit();
+		   	}
+			
 		}
 
 		//Add tracking object

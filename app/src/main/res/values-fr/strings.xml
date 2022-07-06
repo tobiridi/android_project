@@ -5,11 +5,11 @@
     <string name="password_text">Mot de passe</string>
     <string name="cancel_text">Annuler</string>
     <string name="confirm_text">Confirmer</string>
-    <string name="user_success_message">Utilisateur créer</string>
+    <string name="user_success_message">Utilisateur créer avec succès</string>
     <string name="city_text">Ville</string>
     <string name="postal_code_text">Code postale</string>
     <string name="confirm_password_text">Confirmer le mot de passe</string>
-    <string name="postal_address_text">Addresse postale</string>
+    <string name="postal_address_text">Adresse</string>
     <string name="username_text">Nom d\'utilisateur</string>
     <string name="object_title">Liste des objets</string>
     <string name="max_distance_text">Distance maximum</string>
@@ -17,7 +17,7 @@
     <string name="new_object_text">Nouveau objet</string>
     <string name="tracking_objects_text">Suivi des objets</string>
     <string name="logout_text">Déconnexion</string>
-    <string name="street_number_text">Numéro de rue</string>
+    <string name="street_number_text">Numéro</string>
     <string name="cancel_message">Annuler</string>
     <string name="logout_message">Vous êtes déconnecté</string>
     <string name="tracking_objects_title">Suivi des objets</string>
@@ -28,4 +28,8 @@
     <string name="object_price_text">Prix</string>
     <string name="login_error_message">Impossible de ce connecter</string>
     <string name="login_user_not_found_message">Mauvais email et/ou mot de passe</string>
+    <string name="sale_object_success_message">Objet créer avec succès</string>
+    <string name="user_fail_message">Echec de la création de l\'utilisateur</string>
+    <string name="sale_object_fail_message">Echec de la création de l\'objet</string>
+    <string name="password_not_matched_message">Les mot de passe ne sont pas identique ou doit avoir au moins 3 caractères</string>
 </resources>

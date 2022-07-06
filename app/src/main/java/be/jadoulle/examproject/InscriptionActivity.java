@@ -41,8 +41,6 @@ public class InscriptionActivity extends AppCompatActivity {
             EditText et_postal_code = findViewById(R.id.et_postal_code);
             EditText et_city = findViewById(R.id.et_city);
 
-            //TODO : insert a new user in DB (asyncTask) + back to main activity
-            //TODO : send the form data as parameter to AsyncTask
             new UserCreateAsyncTask(InscriptionActivity.this).execute(
                     et_username.getText().toString(),
                     et_email.getText().toString(),
@@ -93,12 +91,12 @@ public class InscriptionActivity extends AppCompatActivity {
     }
 
     //methods called by AsyncTask
-    public void userCreation(String message) {
+    public void confirmUserCreation(String message) {
         //TODO : if user is created or not
         Intent success_intent = new Intent();
-        success_intent.putExtra("confirm_message", "toast user created");
+        //TODO : faire un toast
+        success_intent.putExtra("confirm_message", message);
         setResult(RESULT_OK, success_intent);
         finish();
-
     }
 }

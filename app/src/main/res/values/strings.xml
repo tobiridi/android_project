@@ -12,7 +12,7 @@
     <string name="confirm_password_text">Confirm password</string>
     <string name="city_text">City</string>
     <string name="postal_code_text">Postal code</string>
-    <string name="postal_address_text">Postal address</string>
+    <string name="postal_address_text">Address</string>
     <string name="street_number_text">Street number</string>
     <string name="cancel_text">Cancel</string>
     <string name="confirm_text">Confirm</string>
@@ -26,7 +26,11 @@
     <string name="object_description_text">Object description</string>
     <string name="object_price_text">Price</string>
     <!-- messages -->
-    <string name="user_success_message">User created</string>
+    <string name="user_success_message">User create successfully</string>
+    <string name="user_fail_message">User create failed</string>
+    <string name="sale_object_success_message">Object create successfully</string>
+    <string name="sale_object_fail_message">Object create failed</string>
+    <string name="password_not_matched_message">The password are not same or have less than 3 characters</string>
     <string name="login_error_message">impossible to be connected</string>
     <string name="login_user_not_found_message">Wrong email and/or password</string>
     <string name="cancel_message">Cancel</string>

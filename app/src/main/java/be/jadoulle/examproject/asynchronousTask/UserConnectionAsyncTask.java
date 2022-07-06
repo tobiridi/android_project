@@ -62,7 +62,6 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String jsonString) {
         super.onPostExecute(jsonString);
 
-        String text = null;
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
             if (!jsonObject.isNull("id")){
@@ -71,14 +70,15 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
                 this.activity.userSaleObjectList(user);
             }
             else if (!jsonObject.isNull("errorMessage")){
-                text = this.activity.getString(R.string.login_user_not_found_message);
+                String text  = this.activity.getString(R.string.login_user_not_found_message);
+                Toast.makeText(this.activity, text, Toast.LENGTH_SHORT).show();
             }
 
         } catch (JSONException e) {
             //e.printStackTrace();
-            text = this.activity.getString(R.string.login_error_message);
+            String text  = this.activity.getString(R.string.login_error_message);
+            Toast.makeText(this.activity, text, Toast.LENGTH_SHORT).show();
         }
 
-        Toast.makeText(this.activity, text, Toast.LENGTH_SHORT).show();
     }
 }

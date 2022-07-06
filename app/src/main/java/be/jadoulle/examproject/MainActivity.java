@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener connection_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            //TODO : use async task to verif in db, script php ready
             EditText et_email = findViewById(R.id.et_email);
             EditText et_password = findViewById(R.id.et_password);
             new UserConnectionAsyncTask(MainActivity.this).execute(
@@ -78,15 +77,5 @@ public class MainActivity extends AppCompatActivity {
         Intent object_list_intent = new Intent(MainActivity.this, ObjectListActivity.class);
         object_list_intent.putExtra("user", user);
         startActivityForResult(object_list_intent, MAIN_ACTIVITY_CODE);
-
-        //test de trouver les coordonnées GPS depuis une adresse, fonctionne
-//            Geocoder geocoder = new Geocoder(MainActivity.this);
-//            try {
-//                String address = "37 Rue des Alouettes, Courcelles, 6180";
-//                Address gps_address = geocoder.getFromLocationName(address,1).get(0);
-//                System.out.println(gps_address);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
     }
 }
