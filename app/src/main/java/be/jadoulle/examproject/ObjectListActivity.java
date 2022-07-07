@@ -64,7 +64,7 @@ public class ObjectListActivity extends AppCompatActivity {
         Button btn_add_new_object = findViewById(R.id.btn_add_new_object);
         Button btn_tracking_object = findViewById(R.id.btn_tracking_object);
         Button btn_max_distance_refresh = findViewById(R.id.btn_max_distance_refresh);
-        //TODO : inject all object around the user
+        //TODO : get all object around the user
         LinearLayout ll_sale_objects_list = findViewById(R.id.ll_sale_objects_list);
 
         btn_logout.setOnClickListener(logout_listener);

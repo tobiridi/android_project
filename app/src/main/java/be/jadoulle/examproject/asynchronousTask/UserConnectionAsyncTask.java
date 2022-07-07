@@ -40,22 +40,26 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String jsonString = "";
-        //connection to rpc php
-        try {
-            String parameters = "email=" + strings[0] + "&password=" + strings[1];
-            HttpURLConnection connection = Utilities.httpPostMethod(parameters);
+        if (!Utilities.isEmptyFields(strings)){
+            String jsonString = "";
+            //connection to rpc php
+            try {
+                String parameters = "email=" + strings[0] + "&password=" + strings[1];
+                HttpURLConnection connection = Utilities.httpPostMethod(parameters);
 
-            if (connection.getResponseCode() == 200 || connection.getResponseCode() == 404){
-                //read data send from the server
-                jsonString = Utilities.readServerJsonData(connection);
+                if (connection.getResponseCode() == 200 || connection.getResponseCode() == 404){
+                    //read data send from the server
+                    jsonString = Utilities.readServerJsonData(connection);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+
+            //System.out.println(jsonString);
+            return jsonString;
         }
 
-        //System.out.println(jsonString);
-        return jsonString;
+        return this.activity.getString(R.string.empty_fields_message);
     }
 
     @Override

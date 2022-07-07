@@ -21,13 +21,19 @@ public class UserCreateAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        if (!isValidPassword(strings[2],strings[3])){
+        if (!Utilities.isValidPassword(strings[2],strings[3])) {
             return this.activity.getString(R.string.password_not_matched_message);
+        }
+        if (!Utilities.isValidEmail(strings[1])) {
+            return this.activity.getString(R.string.email_not_matched_message);
+        }
+        if (Utilities.isEmptyFields(strings)){
+            return this.activity.getString(R.string.empty_fields_message);
         }
 
         String parameters = "username="+strings[0]+"&email="+strings[1]+"" +
                 "&password="+strings[2]+"&postal_address="+strings[4]+"" +
-                "&street_number="+strings[5]+"&postal_code="+strings[6]+"&city="+strings[7];
+                "&postal_code="+strings[5]+"&city="+strings[6]+"&street_number="+strings[7];
 
         try {
             HttpURLConnection connection = Utilities.httpPostMethod(parameters);
@@ -48,20 +54,5 @@ public class UserCreateAsyncTask extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String message) {
         super.onPostExecute(message);
         this.activity.confirmUserCreation(message);
-    }
-
-    //validation methods
-    private boolean isValidPassword(String password, String confirmPassword) {
-        return password.equals(confirmPassword) && password.length() >= 3;
-    }
-
-    private boolean isValidEmail(String emailAddress) {
-        Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(emailAddress);
-        return matcher.find();
-    }
-
-    private boolean isValidLength(String text, int minLength) {
-        return text.length() >= minLength;
     }
 }

@@ -53,7 +53,6 @@
             	header('HTTP/1.1 201 Created');
             	exit();
 		   	}
-			
 		}
 
 		//Add tracking object
@@ -78,7 +77,6 @@
 
 	        echo json_encode($tabjson);
 	        header('HTTP/1.1 200 OK');
-
 	        exit();
 		}
 
@@ -91,7 +89,6 @@
 	} catch (Exception $e) {
 		echo ('Erreur: '.$e -> getMessage());
 		header('HTTP/1.1 500 Internal Server Error');
-		
 		exit();
 	}
 

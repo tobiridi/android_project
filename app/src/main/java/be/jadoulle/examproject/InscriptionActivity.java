@@ -7,13 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 
 import be.jadoulle.examproject.asynchronousTask.UserCreateAsyncTask;
-import be.jadoulle.examproject.pojo.User;
 
 public class InscriptionActivity extends AppCompatActivity {
     public static final int INSCRIPTION_ACTIVITY_CODE = 2;
@@ -54,24 +49,23 @@ public class InscriptionActivity extends AppCompatActivity {
         }
     };
 
-    View.OnFocusChangeListener focus_listener = new View.OnFocusChangeListener() {
-        @Override
-        public void onFocusChange(View view, boolean b) {
-            EditText et_password = findViewById(R.id.et_password);
-            EditText et_confirm_password = findViewById(R.id.et_confirm_password);
-            if(!view.isInEditMode()){
-                String confirmPassword = et_confirm_password.getText().toString();
-                String password = et_password.getText().toString();
-                if (password.equals(confirmPassword)){
-                    Toast.makeText(InscriptionActivity.this, "mot de passe identique", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(InscriptionActivity.this, "mot de passe non identique", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-    };
-
+//    View.OnFocusChangeListener focus_listener = new View.OnFocusChangeListener() {
+//        @Override
+//        public void onFocusChange(View view, boolean b) {
+//            EditText et_password = findViewById(R.id.et_password);
+//            EditText et_confirm_password = findViewById(R.id.et_confirm_password);
+//            if(!view.isInEditMode()){
+//                String confirmPassword = et_confirm_password.getText().toString();
+//                String password = et_password.getText().toString();
+//                if (password.equals(confirmPassword)){
+//                    Toast.makeText(InscriptionActivity.this, "mot de passe identique", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    Toast.makeText(InscriptionActivity.this, "mot de passe non identique", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,18 +77,12 @@ public class InscriptionActivity extends AppCompatActivity {
 
         btn_cancel.setOnClickListener(cancel_listener);
         btn_confirm.setOnClickListener(confirm_listener);
-
-        //TODO : temp
-        EditText et_confirm_password = findViewById(R.id.et_confirm_password);
-        et_confirm_password.setOnFocusChangeListener(focus_listener);
-
     }
 
-    //methods called by AsyncTask
     public void confirmUserCreation(String message) {
         //TODO : if user is created or not
         Intent success_intent = new Intent();
-        //TODO : faire un toast
+        //TODO : faire un toast, le toast est fait dans l'activity suivante
         success_intent.putExtra("confirm_message", message);
         setResult(RESULT_OK, success_intent);
         finish();

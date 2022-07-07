@@ -10,6 +10,8 @@ public class SaleObject implements Serializable {
     private String description;
     private Double price;
     private User user;
+    private double longitude;
+    private double latitude;
 
     public int getId() {
         return id;
@@ -50,17 +52,30 @@ public class SaleObject implements Serializable {
         this.user = user;
     }
 
+    public double getLongitude() {
+        return longitude;
+    }
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
     //CONSTRUCTOR
-    public SaleObject(int id, String name, String type, String description, Double price, User user) {
+    public SaleObject(int id, String name, String type, String description, Double price,
+                      User user, double longitude, double latitude) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.description = description;
         this.price = price;
         this.user = user;
-    }
-    
-    public SaleObject() {
-
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 }

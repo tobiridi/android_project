@@ -21,6 +21,11 @@ public class SaleObjectCreateAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
+
+        if (Utilities.isEmptyFields(strings)) {
+            return this.activity.getString(R.string.empty_fields_message);
+        }
+
         int id_user = this.activity.user.getId();
         int street_number = this.activity.user.getStreet_number();
         String address = this.activity.user.getPostal_address();
@@ -34,7 +39,9 @@ public class SaleObjectCreateAsyncTask extends AsyncTask<String, Void, String> {
             //String addressTemp = "rue des alouettes 37, 6180 Courcelles";
             String fullAddress = address + " " + street_number + ", " + postal_code + " " + city;
             Address gps_address = geocoder.getFromLocationName(fullAddress, 1).get(0);
-            //System.out.println(gps_address);
+
+            System.out.println(gps_address);
+
             double longitude = gps_address.getLongitude();
             double latitude = gps_address.getLatitude();
 

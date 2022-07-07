@@ -10,6 +10,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utilities {
     public static HttpURLConnection httpGetMethod(String parameters){
@@ -17,7 +19,7 @@ public class Utilities {
         try {
             URL url = new URL(GlobalSettings.urlServer + parameters);
             connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(5000);
+            connection.setConnectTimeout(GlobalSettings.timeout);
             //GET HTTP request to server
             connection.setRequestMethod("GET");
             //the connection is established
@@ -35,7 +37,7 @@ public class Utilities {
         try {
             URL url = new URL(GlobalSettings.urlServer);
             connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(5000);
+            connection.setConnectTimeout(GlobalSettings.timeout);
             //POST HTTP request to server
             connection.setRequestMethod("POST");
 
@@ -74,5 +76,31 @@ public class Utilities {
             e.printStackTrace();
         }
         return jsonString;
+    }
+
+    //validation methods
+    public static boolean isValidPassword(String password, String confirmPassword) {
+        return password.equals(confirmPassword) && isValidLength(password, 4);
+    }
+
+    public static boolean isValidEmail(String emailAddress) {
+        Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(emailAddress);
+        return matcher.find();
+    }
+
+    public static boolean isValidLength(String text, int minLength) {
+        return text.length() >= minLength;
+    }
+
+    public static boolean isEmptyFields(String[] fields) {
+        boolean isEmptyString = false;
+        for (String field : fields) {
+            isEmptyString = field.isEmpty();
+
+            if (isEmptyString)
+                break;
+        }
+        return isEmptyString;
     }
 }

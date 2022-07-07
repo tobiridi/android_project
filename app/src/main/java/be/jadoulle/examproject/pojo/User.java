@@ -67,24 +67,9 @@ public class User implements Serializable {
     }
 
     //CONSTRUCTOR
-    public User() {
-
-    }
-
     public User(int id, String username, String email, String password, String postal_address,
                 int street_number, String postal_code, String city) {
         this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.postal_address = postal_address;
-        this.street_number = street_number;
-        this.postal_code = postal_code;
-        this.city = city;
-    }
-
-    public User(String username, String email, String password, String postal_address,
-                int street_number, String postal_code, String city) {
         this.username = username;
         this.email = email;
         this.password = password;
