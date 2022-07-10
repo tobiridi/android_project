@@ -1,6 +1,7 @@
 package be.jadoulle.examproject.asynchronousTask;
 
 import android.os.AsyncTask;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,32 +41,26 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        if (!Utilities.isEmptyFields(strings)){
-            String jsonString = "";
-            //connection to rpc php
-            try {
-                String parameters = "email=" + strings[0] + "&password=" + strings[1];
-                HttpURLConnection connection = Utilities.httpPostMethod(parameters);
-
-                if (connection.getResponseCode() == 200 || connection.getResponseCode() == 404){
-                    //read data send from the server
-                    jsonString = Utilities.readServerJsonData(connection);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            //System.out.println(jsonString);
-            return jsonString;
+        if (Utilities.isEmptyFields(strings)) {
+            return this.activity.getString(R.string.empty_fields_message);
         }
 
-        return this.activity.getString(R.string.empty_fields_message);
+        //connection to rpc php
+        String parameters = "email=" + strings[0] + "&password=" + strings[1];
+        HttpURLConnection connection = Utilities.httpPostMethod(parameters);
+
+        //read data send from the server
+        String data = Utilities.readServerJsonData(connection);
+
+        if (data == null)
+            return this.activity.getString(R.string.login_error_message);
+
+        return data;
     }
 
     @Override
     protected void onPostExecute(String jsonString) {
         super.onPostExecute(jsonString);
-
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
             if (!jsonObject.isNull("id")){
@@ -79,10 +74,9 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
             }
 
         } catch (JSONException e) {
-            //e.printStackTrace();
-            String text  = this.activity.getString(R.string.login_error_message);
-            Toast.makeText(this.activity, text, Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+            //String text = this.activity.getString(R.string.login_error_message);
+            Toast.makeText(this.activity, jsonString, Toast.LENGTH_SHORT).show();
         }
-
     }
 }

@@ -25,6 +25,7 @@
     <string name="object_type_text">Object type</string>
     <string name="object_description_text">Object description</string>
     <string name="object_price_text">Price</string>
+    <string name="add_an_image_text">Add an image</string>
     <string name="distance_measure" translatable="false">km</string>
     <!-- messages -->
     <string name="user_success_message">User create successfully</string>
@@ -34,6 +35,7 @@
     <string name="password_not_matched_message">The password are not same or have less than 4 characters</string>
     <string name="email_not_matched_message">The email address is wrong</string>
     <string name="empty_fields_message">One or more fields are empty</string>
+    <string name="price_not_positive_message">The price must be more than 0</string>
     <string name="login_error_message">impossible to be connected</string>
     <string name="login_user_not_found_message">Wrong email and/or password</string>
     <string name="cancel_message">Cancel</string>

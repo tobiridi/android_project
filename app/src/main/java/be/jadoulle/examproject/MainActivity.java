@@ -1,20 +1,19 @@
 package be.jadoulle.examproject;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 import be.jadoulle.examproject.asynchronousTask.UserConnectionAsyncTask;
 import be.jadoulle.examproject.pojo.User;
@@ -47,29 +46,62 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btn_connection = findViewById(R.id.btn_connection);
-        Button btn_inscription = findViewById(R.id.btn_inscription);
+        findViewById(R.id.btn_connection).setOnClickListener(connection_listener);
+        findViewById(R.id.btn_inscription).setOnClickListener(inscription_listener);
+    }
 
-        btn_connection.setOnClickListener(connection_listener);
-        btn_inscription.setOnClickListener(inscription_listener);
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //check permissions
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                //show to the user the requires permissions
+                String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
+                                        Manifest.permission.ACCESS_COARSE_LOCATION};
+
+                ActivityCompat.requestPermissions(this, permissions, MAIN_ACTIVITY_CODE);
+
+            }
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //TODO : what else can i do that display toast ?
-        String text = null;
+        String text;
         if (data != null && requestCode == MAIN_ACTIVITY_CODE) {
-            if(resultCode == RESULT_OK) {
-                text = data.getStringExtra("confirm_message");
+            if (resultCode == RESULT_OK) {
+                text = data.getStringExtra("inscription_message");
+                Toast.makeText(MainActivity.this, text, Toast.LENGTH_LONG).show();
             }
-            else if(resultCode == RESULT_CANCELED) {
-                text = data.getStringExtra("cancel_message");
+            else if (resultCode == RESULT_CANCELED) {
+                text = data.getStringExtra("logout_message");
+                Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //check user permissions
+        if (requestCode == MAIN_ACTIVITY_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                //Toast.makeText(MainActivity.this, "Permissions authorized", Toast.LENGTH_SHORT).show();
+                findViewById(R.id.btn_connection).setOnClickListener(connection_listener);
+                findViewById(R.id.btn_inscription).setOnClickListener(inscription_listener);
+                //Toast.makeText(MainActivity.this, "gps perm ok", Toast.LENGTH_SHORT).show();
             }
             else {
-                text = "Message ...";
+                findViewById(R.id.btn_connection).setOnClickListener(null);
+                findViewById(R.id.btn_inscription).setOnClickListener(null);
+                //Toast.makeText(MainActivity.this, "gps perm pas ok", Toast.LENGTH_SHORT).show();
             }
-            Toast.makeText(MainActivity.this, text, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -78,4 +110,66 @@ public class MainActivity extends AppCompatActivity {
         object_list_intent.putExtra("user", user);
         startActivityForResult(object_list_intent, MAIN_ACTIVITY_CODE);
     }
+
+
+    //else {
+//            //get the position, permissions granted
+//            LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+//            //check if GPS is enabled
+//            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+//                Intent gps_intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//                startActivity(gps_intent);
+//            } else {
+//                //get the location
+//                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GlobalSettings.gpsUpdateTime, GlobalSettings.gpsMinDistance, locationListener);
+//            }
+//        }
+
+
+    //get user position
+    //create listener associate to locationManager
+//    private LocationListener locationListener = new LocationListener() {
+//        @Override
+//        public void onLocationChanged(@NonNull Location location) {
+//            //get longitude
+//            double longitude = location.getLongitude();
+//            //get latitude
+//            double latitude = location.getLatitude();
+//
+//            String text = "Current location :\n" +
+//                    "Longitude : " + longitude + " latitude : " + latitude;
+//            System.out.println(text);
+//        }
+//
+//        @Override
+//        public void onStatusChanged(String provider, int status, Bundle extras) {
+//            //obligate to implement
+//            System.out.println("Location status changed");
+//        }
+//    };
+
+
+
+    //check if the first asking permission
+//                if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION) &&
+//                    shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+//                }
+
+
+
+    //get the position, permissions granted
+//                LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+//
+//                //check if GPS is enabled
+//                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+//                    Intent gps_intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//                    startActivity(gps_intent);
+//                } else {
+//                    if (ActivityCompat.checkSelfPermission(this, permissions[0]) != PackageManager.PERMISSION_GRANTED &&
+//                        ActivityCompat.checkSelfPermission(this, permissions[1]) != PackageManager.PERMISSION_GRANTED) {
+//                        //get the location
+//                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GlobalSettings.gpsUpdateTime, GlobalSettings.gpsMinDistance, locationListener);
+//                    }
+//                }
+
 }

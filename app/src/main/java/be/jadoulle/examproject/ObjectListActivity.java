@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +21,7 @@ public class ObjectListActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent back_intent = getIntent();
-            back_intent.putExtra("cancel_message", getString(R.string.logout_message));
+            back_intent.putExtra("logout_message", getString(R.string.logout_message));
             setResult(RESULT_CANCELED, back_intent);
             finish();
         }
@@ -31,7 +32,7 @@ public class ObjectListActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent new_sale_object_intent = new Intent(ObjectListActivity.this, NewSaleObjectActivity.class);
             new_sale_object_intent.putExtra("user", ObjectListActivity.this.user);
-            startActivityForResult(new_sale_object_intent,OBJECT_LIST_ACTIVITY_CODE);
+            startActivityForResult(new_sale_object_intent, OBJECT_LIST_ACTIVITY_CODE);
         }
     };
 
@@ -47,7 +48,7 @@ public class ObjectListActivity extends AppCompatActivity {
     private View.OnClickListener max_distance_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            Toast.makeText(ObjectListActivity.this, "In progress ...", Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -58,7 +59,7 @@ public class ObjectListActivity extends AppCompatActivity {
 
         //get the user connected
         this.user = (User) getIntent().getSerializableExtra("user");
-        System.out.println("object list : " + this.user);
+        System.out.println("user : " + this.user);
 
         Button btn_logout = findViewById(R.id.btn_logout);
         Button btn_add_new_object = findViewById(R.id.btn_add_new_object);
@@ -71,30 +72,23 @@ public class ObjectListActivity extends AppCompatActivity {
         btn_add_new_object.setOnClickListener(new_object_listener);
         btn_tracking_object.setOnClickListener(tracking_object_listener);
         btn_max_distance_refresh.setOnClickListener(max_distance_listener);
+
     }
 
-    //test onDestroy
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(ObjectListActivity.this, "Destroyed", Toast.LENGTH_SHORT).show();
-    }
+    //test
+    //onDestroy is called when the activity is finish from cancel button or previous button
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        Toast.makeText(ObjectListActivity.this, "Destroyed", Toast.LENGTH_SHORT).show();
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        //TODO : useless
         if (data != null && requestCode == OBJECT_LIST_ACTIVITY_CODE){
-            if(resultCode == RESULT_OK) {
-                Toast.makeText(ObjectListActivity.this, data.getStringExtra("confirm_message"), Toast.LENGTH_SHORT).show();
-            }
-            else if(resultCode == RESULT_CANCELED) {
-                Toast.makeText(ObjectListActivity.this, data.getStringExtra("cancel_message"), Toast.LENGTH_SHORT).show();
-            }
-            else{
-                //nothing
-                //Toast.makeText(ObjectListActivity.this, "Message ...", Toast.LENGTH_SHORT).show();
-            }
+
         }
     }
 }

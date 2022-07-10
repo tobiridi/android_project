@@ -6,48 +6,60 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/connection_title"
-        style="@style/tv_title"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="80dp"/>
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="@string/email_address_text"
-        android:autofillHints="emailAddress"
-        android:layout_marginBottom="20dp"
-        style="@style/et_input"/>
 
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="@string/password_text"
-        android:autofillHints="password"
-        style="@style/et_input"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_connection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/connection_title"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:layout_margin="20dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/connection_title"
+                style="@style/tv_title"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="80dp"/>
 
-    <Button
-        android:id="@+id/btn_inscription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inscription_title"
-        android:textSize="20sp"
-        android:layout_gravity="center" />
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email_address_text"
+                android:autofillHints="emailAddress"
+                android:layout_marginBottom="20dp"
+                style="@style/et_input"/>
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/password_text"
+                android:autofillHints="password"
+                style="@style/et_input"/>
+
+            <Button
+                android:id="@+id/btn_connection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/connection_title"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp" />
+
+            <Button
+                android:id="@+id/btn_inscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/inscription_title"
+                android:textSize="20sp"
+                android:layout_gravity="center" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

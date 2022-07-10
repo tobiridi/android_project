@@ -1,5 +1,6 @@
 package be.jadoulle.examproject.utilitary;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,9 +18,9 @@ public class Utilities {
     public static HttpURLConnection httpGetMethod(String parameters){
         HttpURLConnection connection = null;
         try {
-            URL url = new URL(GlobalSettings.urlServer + parameters);
+            URL url = new URL(GlobalSettings.urlServer + "?" + parameters);
             connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(GlobalSettings.timeout);
+            connection.setConnectTimeout(GlobalSettings.connectionTimeout);
             //GET HTTP request to server
             connection.setRequestMethod("GET");
             //the connection is established
@@ -37,7 +38,8 @@ public class Utilities {
         try {
             URL url = new URL(GlobalSettings.urlServer);
             connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(GlobalSettings.timeout);
+            connection.setConnectTimeout(GlobalSettings.connectionTimeout);
+            connection.setDoOutput(true);
             //POST HTTP request to server
             connection.setRequestMethod("POST");
 
@@ -61,8 +63,14 @@ public class Utilities {
 
     public static String readServerJsonData(HttpURLConnection connection) {
         String jsonString = "";
+        InputStream inputStream;
+
         try {
-            InputStream inputStream = connection.getInputStream();
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_NOT_FOUND)
+                inputStream = new BufferedInputStream(connection.getInputStream());
+            else
+                inputStream = new BufferedInputStream(connection.getErrorStream());
+
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             Scanner scanner = new Scanner(inputStreamReader);
             scanner.useDelimiter("\n");
@@ -71,10 +79,14 @@ public class Utilities {
                 jsonString += scanner.next();
             }
             scanner.close();
+            inputStreamReader.close();
+            inputStream.close();
 
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
+
         return jsonString;
     }
 
@@ -102,5 +114,9 @@ public class Utilities {
                 break;
         }
         return isEmptyString;
+    }
+
+    public static boolean isPositivePrice(double number) {
+        return number > 0;
     }
 }

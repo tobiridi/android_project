@@ -26,6 +26,10 @@ public class SaleObjectCreateAsyncTask extends AsyncTask<String, Void, String> {
             return this.activity.getString(R.string.empty_fields_message);
         }
 
+        if (!Utilities.isPositivePrice(Double.parseDouble(strings[3]))) {
+            return this.activity.getString(R.string.price_not_positive_message);
+        }
+
         int id_user = this.activity.user.getId();
         int street_number = this.activity.user.getStreet_number();
         String address = this.activity.user.getPostal_address();
@@ -36,7 +40,7 @@ public class SaleObjectCreateAsyncTask extends AsyncTask<String, Void, String> {
         Geocoder geocoder = new Geocoder(this.activity);
 
         try {
-            //String addressTemp = "rue des alouettes 37, 6180 Courcelles";
+            // address example : "rue des alouettes 37, 6180 Courcelles"
             String fullAddress = address + " " + street_number + ", " + postal_code + " " + city;
             Address gps_address = geocoder.getFromLocationName(fullAddress, 1).get(0);
 
@@ -51,7 +55,7 @@ public class SaleObjectCreateAsyncTask extends AsyncTask<String, Void, String> {
 
             HttpURLConnection connection = Utilities.httpPostMethod(parameters);
 
-            if(connection.getResponseCode() == 201) {
+            if(connection.getResponseCode() == HttpURLConnection.HTTP_CREATED) {
                 return this.activity.getString(R.string.sale_object_success_message);
             }
 

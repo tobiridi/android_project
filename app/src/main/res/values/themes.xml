@@ -26,6 +26,13 @@
         <item name="backgroundTint">@color/green</item>
     </style>
 
+    <style name="btn_add_image">
+        <item name="android:layout_margin">10dp</item>
+        <item name="backgroundTint">@color/blue</item>
+        <item name="android:text">@string/add_an_image_text</item>
+        <item name="android:drawableLeft">@drawable/ic_add_photo_alternate_48px</item>
+    </style>
+
     <!-- textView style -->
     <style name="tv_title">
         <item name="android:textSize">30sp</item>

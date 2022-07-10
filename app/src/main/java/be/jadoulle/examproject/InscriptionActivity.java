@@ -17,7 +17,6 @@ public class InscriptionActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent back_intent = new Intent();
-            back_intent.putExtra("cancel_message", getString(R.string.cancel_message));
             setResult(RESULT_CANCELED, back_intent);
             finish();
         }
@@ -80,10 +79,8 @@ public class InscriptionActivity extends AppCompatActivity {
     }
 
     public void confirmUserCreation(String message) {
-        //TODO : if user is created or not
         Intent success_intent = new Intent();
-        //TODO : faire un toast, le toast est fait dans l'activity suivante
-        success_intent.putExtra("confirm_message", message);
+        success_intent.putExtra("inscription_message", message);
         setResult(RESULT_OK, success_intent);
         finish();
     }

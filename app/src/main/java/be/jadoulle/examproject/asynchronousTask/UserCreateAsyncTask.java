@@ -38,7 +38,7 @@ public class UserCreateAsyncTask extends AsyncTask<String, Void, String> {
         try {
             HttpURLConnection connection = Utilities.httpPostMethod(parameters);
 
-            if(connection.getResponseCode() == 201) {
+            if(connection.getResponseCode() == HttpURLConnection.HTTP_CREATED) {
                 return this.activity.getString(R.string.user_success_message);
             }
         }
