@@ -1,7 +1,12 @@
 package be.jadoulle.examproject.utilitary;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -90,9 +95,21 @@ public class Utilities {
         return jsonString;
     }
 
+    public static String bitmapToBase64 (Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,baos);
+
+        return Base64.encodeToString(baos.toByteArray(),Base64.DEFAULT);
+    }
+
+    public static Bitmap base64ToBitmap(String bitmapEncoded) {
+        byte[] decodeString = Base64.decode(bitmapEncoded, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(decodeString,0,decodeString.length);
+    }
+
     //validation methods
     public static boolean isValidPassword(String password, String confirmPassword) {
-        return password.equals(confirmPassword) && isValidLength(password, 4);
+        return password.equals(confirmPassword) && isValidLength(password, GlobalSettings.passwordMinLength);
     }
 
     public static boolean isValidEmail(String emailAddress) {
@@ -102,13 +119,13 @@ public class Utilities {
     }
 
     public static boolean isValidLength(String text, int minLength) {
-        return text.length() >= minLength;
+        return text.trim().length() >= minLength;
     }
 
     public static boolean isEmptyFields(String[] fields) {
         boolean isEmptyString = false;
         for (String field : fields) {
-            isEmptyString = field.isEmpty();
+            isEmptyString = field.isEmpty() || field.trim().length() == 0;
 
             if (isEmptyString)
                 break;

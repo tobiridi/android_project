@@ -32,12 +32,13 @@
     <string name="user_fail_message">User create failed</string>
     <string name="sale_object_success_message">Object create successfully</string>
     <string name="sale_object_fail_message">Object create failed</string>
-    <string name="password_not_matched_message">The password are not same or have less than 4 characters</string>
+    <string name="password_not_matched_message">The password are not same</string>
     <string name="email_not_matched_message">The email address is wrong</string>
     <string name="empty_fields_message">One or more fields are empty</string>
     <string name="price_not_positive_message">The price must be more than 0</string>
     <string name="login_error_message">impossible to be connected</string>
     <string name="login_user_not_found_message">Wrong email and/or password</string>
+    <string name="text_too_short_message">The text is too short</string>
     <string name="cancel_message">Cancel</string>
     <string name="logout_message">Logout</string>
 </resources>

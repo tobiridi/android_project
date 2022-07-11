@@ -14,18 +14,30 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import be.jadoulle.examproject.asynchronousTask.SaleObjectCreateAsyncTask;
 import be.jadoulle.examproject.pojo.User;
+import be.jadoulle.examproject.utilitary.Utilities;
 
 public class NewSaleObjectActivity extends AppCompatActivity {
     public static final int NEW_SALE_OBJECT_ACTIVITY_CODE = 4;
     public User user = null;
+    private ArrayList<String> encodedBitmaps = new ArrayList<>();
 
     private View.OnClickListener cancel_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            /** FONCTIONNE */
+//            LinearLayout ll_sale_objects_list = findViewById(R.id.ll_new_sale_objects_list);
+//            for (int i = 0; i < encodedBitmaps.size(); i++) {
+//                ImageView imageView = new ImageView(NewSaleObjectActivity.this);
+//                imageView.setImageBitmap(Utilities.base64ToBitmap(encodedBitmaps.get(i)));
+//                ll_sale_objects_list.addView(imageView);
+//            }
+
             setResult(RESULT_CANCELED);
-            finish();
+            //finish();
         }
     };
 
@@ -43,6 +55,8 @@ public class NewSaleObjectActivity extends AppCompatActivity {
                     et_object_description.getText().toString(),
                     et_object_price.getText().toString()
             );
+
+
         }
     };
 
@@ -80,12 +94,14 @@ public class NewSaleObjectActivity extends AppCompatActivity {
                 Bundle bundle = data.getExtras();
                 Bitmap bitmap = (Bitmap) bundle.get("data");
 
+                //convert bitmap to base64
+                encodedBitmaps.add(Utilities.bitmapToBase64(bitmap));
+
                 //add the image(s) to the list of sale object's images
                 LinearLayout ll_image_sale_object = findViewById(R.id.ll_image_sale_object);
                 ImageView imageView = new ImageView(NewSaleObjectActivity.this);
                 imageView.setImageBitmap(bitmap);
                 imageView.setPaddingRelative(10,10,10,10);
-                //resize if possible ???
                 ll_image_sale_object.addView(imageView);
 
             }

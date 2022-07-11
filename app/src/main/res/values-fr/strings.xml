@@ -31,9 +31,10 @@
     <string name="sale_object_success_message">Objet créer avec succès</string>
     <string name="user_fail_message">Echec de la création de l\'utilisateur</string>
     <string name="sale_object_fail_message">Echec de la création de l\'objet</string>
-    <string name="password_not_matched_message">Les mot de passe ne sont pas identiques ou doivent contenir au moins 4 caractères</string>
+    <string name="password_not_matched_message">Les mot de passe ne sont pas identiques</string>
     <string name="email_not_matched_message">L\'adresse email est mauvaise</string>
     <string name="empty_fields_message">Un ou plusieurs champs sont vides</string>
     <string name="add_an_image_text">Ajouter une image</string>
     <string name="price_not_positive_message">Le prix doit être supérieur à 0</string>
+    <string name="text_too_short_message">Le texte est trop court</string>
 </resources>

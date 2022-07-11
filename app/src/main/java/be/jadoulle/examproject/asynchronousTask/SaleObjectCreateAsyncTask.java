@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 
 import be.jadoulle.examproject.NewSaleObjectActivity;
 import be.jadoulle.examproject.R;
+import be.jadoulle.examproject.utilitary.GlobalSettings;
 import be.jadoulle.examproject.utilitary.Utilities;
 
 public class SaleObjectCreateAsyncTask extends AsyncTask<String, Void, String> {
@@ -28,6 +29,10 @@ public class SaleObjectCreateAsyncTask extends AsyncTask<String, Void, String> {
 
         if (!Utilities.isPositivePrice(Double.parseDouble(strings[3]))) {
             return this.activity.getString(R.string.price_not_positive_message);
+        }
+
+        if (!Utilities.isValidLength(strings[0], GlobalSettings.textMinLength)) {
+            return "\"" + strings[0] + "\" : " + this.activity.getString(R.string.text_too_short_message);
         }
 
         int id_user = this.activity.user.getId();
