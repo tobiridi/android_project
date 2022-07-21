@@ -23,21 +23,14 @@ import be.jadoulle.examproject.utilitary.Utilities;
 public class NewSaleObjectActivity extends AppCompatActivity {
     public static final int NEW_SALE_OBJECT_ACTIVITY_CODE = 4;
     public User user = null;
-    private ArrayList<String> encodedBitmaps = new ArrayList<>();
+    public ArrayList<String> encodedBitmaps = new ArrayList<>();
 
     private View.OnClickListener cancel_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            /** FONCTIONNE */
-//            LinearLayout ll_sale_objects_list = findViewById(R.id.ll_new_sale_objects_list);
-//            for (int i = 0; i < encodedBitmaps.size(); i++) {
-//                ImageView imageView = new ImageView(NewSaleObjectActivity.this);
-//                imageView.setImageBitmap(Utilities.base64ToBitmap(encodedBitmaps.get(i)));
-//                ll_sale_objects_list.addView(imageView);
-//            }
-
             setResult(RESULT_CANCELED);
-            //finish();
+            NewSaleObjectActivity.this.user = null;
+            finish();
         }
     };
 
@@ -55,8 +48,6 @@ public class NewSaleObjectActivity extends AppCompatActivity {
                     et_object_description.getText().toString(),
                     et_object_price.getText().toString()
             );
-
-
         }
     };
 
@@ -83,7 +74,7 @@ public class NewSaleObjectActivity extends AppCompatActivity {
         btn_add_image_sale_object.setOnClickListener(add_image_listener);
 
         this.user = (User) getIntent().getSerializableExtra("user");
-        System.out.println("user : " + this.user);
+        //System.out.println("user : " + this.user);
     }
 
     @Override
@@ -103,7 +94,6 @@ public class NewSaleObjectActivity extends AppCompatActivity {
                 imageView.setImageBitmap(bitmap);
                 imageView.setPaddingRelative(10,10,10,10);
                 ll_image_sale_object.addView(imageView);
-
             }
         }
     }

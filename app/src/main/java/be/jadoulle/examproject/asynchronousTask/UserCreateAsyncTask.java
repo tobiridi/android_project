@@ -21,6 +21,8 @@ public class UserCreateAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
+        HttpURLConnection connection = null;
+
         if (!Utilities.isValidPassword(strings[2],strings[3])) {
             return this.activity.getString(R.string.password_not_matched_message);
         }
@@ -36,9 +38,10 @@ public class UserCreateAsyncTask extends AsyncTask<String, Void, String> {
                 "&postal_code="+strings[5]+"&city="+strings[6]+"&street_number="+strings[7];
 
         try {
-            HttpURLConnection connection = Utilities.httpPostMethod(parameters);
+             connection = Utilities.httpPostMethod(parameters);
 
             if(connection.getResponseCode() == HttpURLConnection.HTTP_CREATED) {
+                connection.disconnect();
                 return this.activity.getString(R.string.user_success_message);
             }
         }
@@ -47,6 +50,7 @@ public class UserCreateAsyncTask extends AsyncTask<String, Void, String> {
             e.printStackTrace();
         }
 
+        connection.disconnect();
         return this.activity.getString(R.string.user_fail_message);
     }
 

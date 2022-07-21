@@ -4,18 +4,22 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import be.jadoulle.examproject.asynchronousTask.SaleObjectListAsyncTask;
+import be.jadoulle.examproject.pojo.SaleObject;
 import be.jadoulle.examproject.pojo.User;
 
 public class ObjectListActivity extends AppCompatActivity {
     public static final int OBJECT_LIST_ACTIVITY_CODE = 3;
     public User user = null;
+    public ArrayList<SaleObject> saleObjects = new ArrayList<>();
 
     private View.OnClickListener logout_listener = new View.OnClickListener() {
         @Override
@@ -75,13 +79,19 @@ public class ObjectListActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //TODO : here
+//        new SaleObjectListAsyncTask(ObjectListActivity.this).execute();
+//        for (int i = 0; i < ObjectListActivity.this.saleObjects.size(); i++) {
+//            System.out.println(ObjectListActivity.this.saleObjects.get(i));
+//            System.out.println(ObjectListActivity.this.saleObjects.get(i).getUser().getId());
+//        }
+    }
+
     //test
     //onDestroy is called when the activity is finish from cancel button or previous button
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        Toast.makeText(ObjectListActivity.this, "Destroyed", Toast.LENGTH_SHORT).show();
-//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

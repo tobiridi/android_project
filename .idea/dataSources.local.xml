@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="PS-212.5457.49">
+    <data-source name="postgres_android" uuid="5a5b7783-76d5-44a9-b4f1-5a44e87d0cde">
+      <database-info product="PostgreSQL" version="11.12 (Debian 11.12-0+deb10u1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.22" dbms="POSTGRES" exact-version="11.12" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>js2118</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="js2118">
+            <node kind="schema" qname="public" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+  </component>
+</project>

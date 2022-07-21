@@ -44,6 +44,9 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
         if (Utilities.isEmptyFields(strings)) {
             return this.activity.getString(R.string.empty_fields_message);
         }
+        if (!Utilities.isValidEmail(strings[0])) {
+            return this.activity.getString(R.string.email_not_matched_message);
+        }
 
         //connection to rpc php
         String parameters = "email=" + strings[0] + "&password=" + strings[1];
@@ -55,6 +58,7 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
         if (data == null)
             return this.activity.getString(R.string.login_error_message);
 
+        connection.disconnect();
         return data;
     }
 

@@ -54,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        //set empty EditText
+        EditText email = findViewById(R.id.et_email);
+        EditText password = findViewById(R.id.et_password);
+        email.setText("");
+        password.setText("");
+
         //check permissions
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
             ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
