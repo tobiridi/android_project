@@ -39,15 +39,19 @@ public class SaleObjectCreateAsyncTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
 
         if (Utilities.isEmptyFields(strings)) {
-            return this.activity.getString(R.string.empty_fields_message);
+            return this.activity.getResources().getString(R.string.empty_fields_message);
         }
 
         if (!Utilities.isPositivePrice(Double.parseDouble(strings[3]))) {
-            return this.activity.getString(R.string.price_not_positive_message);
+            return this.activity.getResources().getString(R.string.price_not_positive_message);
         }
 
-        if (!Utilities.isValidLength(strings[0], GlobalSettings.textMinLength)) {
-            return "\"" + strings[0] + "\" : " + this.activity.getString(R.string.text_too_short_message);
+        if (!Utilities.isValidLength(strings[0], GlobalSettings.saleObjectNameMinLength)) {
+            return "\"" + this.activity.getResources().getString(R.string.object_name_text) + "\" : " + this.activity.getResources().getString(R.string.text_too_short_message);
+        }
+
+        if (!Utilities.isValidLength(strings[2], GlobalSettings.saleObjectDescriptionMinLength)) {
+            return "\"" + this.activity.getResources().getString(R.string.object_description_text) + "\" : " + this.activity.getResources().getString(R.string.text_too_short_message);
         }
 
         int id_user = this.activity.user.getId();
@@ -90,38 +94,34 @@ public class SaleObjectCreateAsyncTask extends AsyncTask<String, Void, String> {
                     e.printStackTrace();
                 }
 
+                connection1.disconnect();
+
                 //System.out.println("id sale object : "  + id_sale_object);
 
-                //TODO : warning : i send the bitmap in base64 to the server
+                // TODO : Warning : i send the bitmap in base64 to the server
                 //save images of sale object
-                boolean isSuccess = false;
                 for (int i = 0; i < this.activity.encodedBitmaps.size(); i++) {
                     parameters = "img_base64=" + this.activity.encodedBitmaps.get(i) + "&id_sale_object=" + id_sale_object;
 
                     HttpURLConnection connection2 = Utilities.httpPostMethod(parameters);
 
-                    isSuccess = (connection2.getResponseCode() == HttpURLConnection.HTTP_CREATED);
-                    if (!isSuccess)
+                    if (connection2.getResponseCode() != HttpURLConnection.HTTP_CREATED)
                         break;
                 }
 
-                if (isSuccess) {
-                    return this.activity.getString(R.string.sale_object_success_message);
-                }
+                return this.activity.getResources().getString(R.string.sale_object_success_message);
             }
-            connection1.disconnect();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-       return this.activity.getString(R.string.sale_object_fail_message);
+       return this.activity.getResources().getString(R.string.sale_object_fail_message);
     }
 
     @Override
     protected void onPostExecute(String message) {
         super.onPostExecute(message);
-        //save the images
         this.activity.confirmSaleObjectCreation(message);
     }
 }

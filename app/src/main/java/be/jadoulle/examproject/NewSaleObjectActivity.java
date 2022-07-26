@@ -29,7 +29,6 @@ public class NewSaleObjectActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             setResult(RESULT_CANCELED);
-            NewSaleObjectActivity.this.user = null;
             finish();
         }
     };
@@ -99,7 +98,7 @@ public class NewSaleObjectActivity extends AppCompatActivity {
     }
 
     public void confirmSaleObjectCreation(String message) {
-        Toast.makeText(NewSaleObjectActivity.this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(NewSaleObjectActivity.this, message, Toast.LENGTH_LONG).show();
         setResult(RESULT_OK);
         finish();
     }

@@ -79,6 +79,10 @@ public class User implements Serializable {
         this.city = city;
     }
 
+    public User (int id) {
+        this.id = id;
+    }
+
     //METHODS
     @Override
     public String toString() {

@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
 
@@ -33,13 +32,17 @@ public class SaleObjectListAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String jsonString) {
-        System.out.println(jsonString);
         super.onPostExecute(jsonString);
+        //System.out.println(jsonString);
         try {
             JSONArray jsonObjects = new JSONArray(jsonString);
             for (int i = 0; i < jsonObjects.length(); i++) {
-                SaleObject saleObject = new Gson().fromJson(jsonObjects.get(i).toString(), SaleObject.class);
-                this.activity.saleObjects.add(saleObject);
+                int id_user = jsonObjects.getJSONObject(i).getInt("id_user");
+                User user = new User(id_user);
+                SaleObject saleObject = new Gson().fromJson(jsonObjects.getJSONObject(i).toString(), SaleObject.class);
+                saleObject.setUser(user);
+                //System.out.println("ajouter dans allSaleObject : " + saleObject);
+                this.activity.allSaleObjects.add(saleObject);
             }
 
         } catch (JSONException e) {

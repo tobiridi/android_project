@@ -24,13 +24,13 @@ public class UserCreateAsyncTask extends AsyncTask<String, Void, String> {
         HttpURLConnection connection = null;
 
         if (!Utilities.isValidPassword(strings[2],strings[3])) {
-            return this.activity.getString(R.string.password_not_matched_message);
+            return this.activity.getResources().getString(R.string.password_not_matched_message);
         }
         if (!Utilities.isValidEmail(strings[1])) {
-            return this.activity.getString(R.string.email_not_matched_message);
+            return this.activity.getResources().getString(R.string.email_not_matched_message);
         }
         if (Utilities.isEmptyFields(strings)){
-            return this.activity.getString(R.string.empty_fields_message);
+            return this.activity.getResources().getString(R.string.empty_fields_message);
         }
 
         String parameters = "username="+strings[0]+"&email="+strings[1]+"" +
@@ -42,7 +42,7 @@ public class UserCreateAsyncTask extends AsyncTask<String, Void, String> {
 
             if(connection.getResponseCode() == HttpURLConnection.HTTP_CREATED) {
                 connection.disconnect();
-                return this.activity.getString(R.string.user_success_message);
+                return this.activity.getResources().getString(R.string.user_success_message);
             }
         }
 
@@ -51,7 +51,7 @@ public class UserCreateAsyncTask extends AsyncTask<String, Void, String> {
         }
 
         connection.disconnect();
-        return this.activity.getString(R.string.user_fail_message);
+        return this.activity.getResources().getString(R.string.user_fail_message);
     }
 
     @Override

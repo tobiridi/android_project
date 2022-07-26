@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Exam project</string>
+    <!-- titles -->
     <string name="connection_title">Connection</string>
     <string name="object_title">Objects list</string>
     <string name="inscription_title" translatable="false">Inscription</string>
@@ -27,6 +28,7 @@
     <string name="object_price_text">Price</string>
     <string name="add_an_image_text">Add an image</string>
     <string name="distance_measure" translatable="false">km</string>
+    <string name="currency" translatable="false">€</string>
     <!-- messages -->
     <string name="user_success_message">User create successfully</string>
     <string name="user_fail_message">User create failed</string>
@@ -39,6 +41,20 @@
     <string name="login_error_message">impossible to be connected</string>
     <string name="login_user_not_found_message">Wrong email and/or password</string>
     <string name="text_too_short_message">The text is too short</string>
+    <string name="objects_not_loaded_message">Objects not loaded</string>
+    <string name="objects_not_found_message">No object found</string>
     <string name="cancel_message">Cancel</string>
     <string name="logout_message">Logout</string>
+    <!-- object Types -->
+    <string name="car">Car</string>
+    <string name="truck">Truck</string>
+    <string name="bicycle">Bicycle</string>
+    <string name="computer">Computer</string>
+    <string name="keyboard">Keyboard</string>
+    <string name="mouse">Mouse</string>
+    <string name="pants">Pants</string>
+    <string name="shirt">Shirt</string>
+    <string name="printer">Printer</string>
+    <string name="food">Food</string>
+    <string name="other">Other</string>
 </resources>

@@ -42,10 +42,10 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... strings) {
         if (Utilities.isEmptyFields(strings)) {
-            return this.activity.getString(R.string.empty_fields_message);
+            return this.activity.getResources().getString(R.string.empty_fields_message);
         }
         if (!Utilities.isValidEmail(strings[0])) {
-            return this.activity.getString(R.string.email_not_matched_message);
+            return this.activity.getResources().getString(R.string.email_not_matched_message);
         }
 
         //connection to rpc php
@@ -56,7 +56,7 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
         String data = Utilities.readServerJsonData(connection);
 
         if (data == null)
-            return this.activity.getString(R.string.login_error_message);
+            return this.activity.getResources().getString(R.string.login_error_message);
 
         connection.disconnect();
         return data;
@@ -73,7 +73,7 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
                 this.activity.userSaleObjectList(user);
             }
             else if (!jsonObject.isNull("errorMessage")){
-                String text  = this.activity.getString(R.string.login_user_not_found_message);
+                String text  = this.activity.getResources().getString(R.string.login_user_not_found_message);
                 Toast.makeText(this.activity, text, Toast.LENGTH_SHORT).show();
             }
 

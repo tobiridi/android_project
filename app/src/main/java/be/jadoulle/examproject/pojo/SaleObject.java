@@ -78,4 +78,19 @@ public class SaleObject implements Serializable {
         this.longitude = longitude;
         this.latitude = latitude;
     }
+
+    //METHODS
+    @Override
+    public String toString() {
+        return "SaleObject{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", user=" + user +
+                ", longitude=" + longitude +
+                ", latitude=" + latitude +
+                '}';
+    }
 }
