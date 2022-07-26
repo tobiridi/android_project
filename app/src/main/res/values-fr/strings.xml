@@ -50,4 +50,5 @@
     <string name="other">Autre</string>
     <string name="objects_not_loaded_message">Objets non chargées</string>
     <string name="objects_not_found_message">Aucun objet trouvé</string>
+    <string name="editText_empty_message">Ce champ ne peut pas être vide</string>
 </resources>

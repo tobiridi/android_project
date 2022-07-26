@@ -43,6 +43,7 @@
     <string name="text_too_short_message">The text is too short</string>
     <string name="objects_not_loaded_message">Objects not loaded</string>
     <string name="objects_not_found_message">No object found</string>
+    <string name="editText_empty_message">This field can not be empty</string>
     <string name="cancel_message">Cancel</string>
     <string name="logout_message">Logout</string>
     <!-- object Types -->

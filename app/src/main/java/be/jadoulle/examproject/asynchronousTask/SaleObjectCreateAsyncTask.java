@@ -94,8 +94,6 @@ public class SaleObjectCreateAsyncTask extends AsyncTask<String, Void, String> {
                     e.printStackTrace();
                 }
 
-                connection1.disconnect();
-
                 //System.out.println("id sale object : "  + id_sale_object);
 
                 // TODO : Warning : i send the bitmap in base64 to the server
@@ -111,6 +109,8 @@ public class SaleObjectCreateAsyncTask extends AsyncTask<String, Void, String> {
 
                 return this.activity.getResources().getString(R.string.sale_object_success_message);
             }
+
+            connection1.disconnect();
 
         } catch (IOException e) {
             e.printStackTrace();

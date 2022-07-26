@@ -2,20 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="be.jadoulle.examproject">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- GPS location -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- GPS location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:isGame="false"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ExamProject">
+        android:theme="@style/Theme.ExamProject"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".DetailsSaleObjectActivity"
+            android:exported="true" />
         <activity
             android:name=".TrackingObjectActivity"
             android:exported="true" />

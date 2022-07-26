@@ -78,9 +78,10 @@ public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {
             }
 
         } catch (JSONException e) {
-            e.printStackTrace();
-            //String text = this.activity.getString(R.string.login_error_message);
-            Toast.makeText(this.activity, jsonString, Toast.LENGTH_SHORT).show();
+            ///e.printStackTrace();
+            //System.out.println(jsonString);
+            String text = this.activity.getResources().getString(R.string.login_error_message);
+            Toast.makeText(this.activity, text, Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -28,6 +28,7 @@ import be.jadoulle.examproject.asynchronousTask.SaleObjectListAsyncTask;
 import be.jadoulle.examproject.pojo.SaleObject;
 import be.jadoulle.examproject.pojo.User;
 import be.jadoulle.examproject.utilitary.GlobalSettings;
+import be.jadoulle.examproject.utilitary.Utilities;
 
 public class ObjectListActivity extends AppCompatActivity {
     public static final int OBJECT_LIST_ACTIVITY_CODE = 3;
@@ -122,6 +123,11 @@ public class ObjectListActivity extends AppCompatActivity {
         public void onClick(View view) {
             //get distance search
             EditText et_max_distance = findViewById(R.id.et_max_distance);
+            if (et_max_distance.getText().toString().trim().isEmpty()){
+                String text = "\"" + ObjectListActivity.this.getResources().getString(R.string.max_distance_text) + "\" : " + ObjectListActivity.this.getResources().getString(R.string.editText_empty_message);
+                Toast.makeText(ObjectListActivity.this, text, Toast.LENGTH_SHORT).show();
+                return;
+            }
             ObjectListActivity.this.currentDistance = Float.parseFloat(et_max_distance.getText().toString());
 
             //get GPS status
@@ -175,7 +181,7 @@ public class ObjectListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("je passe dans le onResume");
+        //System.out.println("i am in onResume");
         //get all objects in DB
         ObjectListActivity.this.allSaleObjects.clear();
         new SaleObjectListAsyncTask(ObjectListActivity.this).execute();

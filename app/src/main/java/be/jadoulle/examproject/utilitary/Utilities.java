@@ -133,6 +133,8 @@ public class Utilities {
             return null;
         }
 
+        connection.disconnect();
+
         return jsonString;
     }
 

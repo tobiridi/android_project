@@ -27,8 +27,10 @@ public class SaleObjectListAsyncTask extends AsyncTask<Void, Void, String> {
     protected String doInBackground(Void... voids) {
         String parameters = "all_sale_object=true";
         HttpURLConnection connection = Utilities.httpGetMethod(parameters);
+        connection.disconnect();
         return Utilities.readServerJsonData(connection);
     }
+
 
     @Override
     protected void onPostExecute(String jsonString) {
