@@ -27,16 +27,14 @@ public class SaleObjectListAsyncTask extends AsyncTask<Void, Void, String> {
     protected String doInBackground(Void... voids) {
         String parameters = "all_sale_object=true";
         HttpURLConnection connection = Utilities.httpGetMethod(parameters);
-        connection.disconnect();
         return Utilities.readServerJsonData(connection);
     }
-
 
     @Override
     protected void onPostExecute(String jsonString) {
         super.onPostExecute(jsonString);
-        //System.out.println(jsonString);
         try {
+            //System.out.println(jsonString);
             JSONArray jsonObjects = new JSONArray(jsonString);
             for (int i = 0; i < jsonObjects.length(); i++) {
                 int id_user = jsonObjects.getJSONObject(i).getInt("id_user");

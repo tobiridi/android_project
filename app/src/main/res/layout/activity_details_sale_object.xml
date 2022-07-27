@@ -1,9 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".DetailsSaleObjectActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/details_sale_object_title"
+        style="@style/tv_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_object_name"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                style="@style/tv_information"
+                android:layout_margin="10dp"
+                android:autofillHints="name"/>
+
+            <TextView
+                android:id="@+id/tv_object_type"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                style="@style/tv_information"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_object_description"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                style="@style/tv_information"
+                android:layout_margin="10dp"
+                android:autofillHints="name"/>
+
+            <TextView
+                android:id="@+id/tv_object_price"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                style="@style/tv_information"
+                android:layout_margin="10dp"
+                android:autofillHints="name"/>
+
+            <TextView
+                android:id="@+id/tv_username_seller"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                style="@style/tv_information"
+                android:layout_margin="10dp"
+                android:autofillHints="name"/>
+
+            <TextView
+                android:id="@+id/tv_object_distance"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                style="@style/tv_information"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_image_sale_object"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <CheckBox
+                android:id="@+id/cb_tracking_object"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_tracking_text"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_validate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/validate_text"
+                android:layout_gravity="center"
+                style="@style/btn_validate"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

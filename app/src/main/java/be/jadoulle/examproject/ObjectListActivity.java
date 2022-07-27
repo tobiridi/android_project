@@ -23,6 +23,8 @@ import android.widget.TableRow;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import be.jadoulle.examproject.asynchronousTask.SaleObjectListAsyncTask;
 import be.jadoulle.examproject.pojo.SaleObject;
@@ -37,6 +39,7 @@ public class ObjectListActivity extends AppCompatActivity {
     public ArrayList<SaleObject> saleObjects = new ArrayList<>();
     private float currentDistance = GlobalSettings.gpsDefaultDistance;
     private LocationManager locationManager = null;
+    public Map<Integer,Double> saleObjectsDistance = new HashMap<>();
 
 
     private LocationListener locationListener = new LocationListener() {
@@ -63,6 +66,7 @@ public class ObjectListActivity extends AppCompatActivity {
                 //distance in meters to km
                 if (distanceResult[0] / 1000 <= ObjectListActivity.this.currentDistance) {
                     ObjectListActivity.this.saleObjects.add(saleObject);
+                    ObjectListActivity.this.saleObjectsDistance.put(saleObject.getId(),(double) distanceResult[0]);
                     //System.out.println("elements dans la liste : " + ObjectListActivity.this.saleObjects.size());
                 }
             }
@@ -96,15 +100,28 @@ public class ObjectListActivity extends AppCompatActivity {
         }
     };
 
-    //TODO : to do
+    //TODO : i am here
     private View.OnClickListener details_sale_object_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-//            Intent new_sale_object_intent = new Intent(ObjectListActivity.this, ???);
-//            //send the clicked sale_object
-//            new_sale_object_intent.putExtra("user", ObjectListActivity.this.user);
-//            startActivity(new_sale_object_intent);
-            Toast.makeText(ObjectListActivity.this, "In progress ...", Toast.LENGTH_SHORT).show();
+            SaleObject selectedSaleObject = null;
+            try {
+                for (SaleObject saleObject: ObjectListActivity.this.saleObjects) {
+                    if (saleObject.getId() == view.getId()) {
+                        selectedSaleObject = saleObject;
+                        break;
+                    }
+                }
+                Intent details_sale_object_intent = new Intent(ObjectListActivity.this, DetailsSaleObjectActivity.class);
+                //send the clicked sale_object
+                details_sale_object_intent.putExtra("user", ObjectListActivity.this.user);
+                details_sale_object_intent.putExtra("selectedSaleObject",selectedSaleObject);
+                details_sale_object_intent.putExtra("saleObjectDistance",ObjectListActivity.this.saleObjectsDistance.get(selectedSaleObject.getId()));
+                startActivity(details_sale_object_intent);
+
+            } catch (NullPointerException e) {
+                //e.printStackTrace();
+            }
         }
     };
 
@@ -232,6 +249,7 @@ public class ObjectListActivity extends AppCompatActivity {
                     btn.setText(ObjectListActivity.this.saleObjectContent(saleObject));
                     btn.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button_gradient_corner_background, null));
                     btn.setOnClickListener(details_sale_object_listener);
+                    btn.setId(saleObject.getId());
 
                     tableRow.addView(btn);
                     tl_sale_objects_list.addView(tableRow, new TableLayout.LayoutParams(

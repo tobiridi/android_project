@@ -8,7 +8,7 @@ public class SaleObject implements Serializable {
     private String name;
     private String type;
     private String description;
-    private Double price;
+    private double price;
     private User user;
     private double longitude;
     private double latitude;
@@ -38,10 +38,10 @@ public class SaleObject implements Serializable {
         this.description = description;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -67,7 +67,7 @@ public class SaleObject implements Serializable {
     }
 
     //CONSTRUCTOR
-    public SaleObject(int id, String name, String type, String description, Double price,
+    public SaleObject(int id, String name, String type, String description, double price,
                       User user, double longitude, double latitude) {
         this.id = id;
         this.name = name;

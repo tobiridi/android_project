@@ -51,4 +51,8 @@
     <string name="objects_not_loaded_message">Objets non chargées</string>
     <string name="objects_not_found_message">Aucun objet trouvé</string>
     <string name="editText_empty_message">Ce champ ne peut pas être vide</string>
+    <string name="details_sale_object_title">Détails de l\'objet de vente</string>
+    <string name="validate_text">Valider</string>
+    <string name="add_tracking_text">Ajouter aux objets suivi</string>
+    <string name="validation_success_message">Validation réussie</string>
 </resources>

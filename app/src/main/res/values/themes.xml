@@ -26,6 +26,12 @@
         <item name="backgroundTint">@color/green</item>
     </style>
 
+    <style name="btn_validate">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="backgroundTint">@color/orange</item>
+    </style>
+
     <style name="btn_add_image">
         <item name="android:layout_margin">10dp</item>
         <item name="backgroundTint">@color/blue</item>
@@ -37,6 +43,14 @@
     <style name="tv_title">
         <item name="android:textSize">30sp</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">20dp</item>
+    </style>
+
+    <style name="tv_information">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:scrollbars">horizontal</item>
     </style>
 
     <!-- editText style -->
