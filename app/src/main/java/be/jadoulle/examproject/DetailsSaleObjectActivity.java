@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,14 +14,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import be.jadoulle.examproject.asynchronousTask.SaleObjectCreateAsyncTask;
 import be.jadoulle.examproject.asynchronousTask.SaleObjectDetailsAsyncTask;
 import be.jadoulle.examproject.asynchronousTask.TrackingSaleObjectAddAsyncTask;
 import be.jadoulle.examproject.pojo.SaleObject;
 import be.jadoulle.examproject.pojo.User;
+import be.jadoulle.examproject.utilitary.GlobalSettings;
 
 public class DetailsSaleObjectActivity extends AppCompatActivity {
-    public static final int DETAILS_SALE_OBJECT_ACTIVITY_CODE = 6;
+    public static final int DETAILS_SALE_OBJECT_ACTIVITY_CODE = GlobalSettings.DETAILS_SALE_ACTIVITY_CODE;
     public User user = null;
     public SaleObject selectedSaleObject = null;
     private double saleObjectDistance = 0.0;

@@ -4,12 +4,9 @@ import android.os.AsyncTask;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import be.jadoulle.examproject.InscriptionActivity;
 import be.jadoulle.examproject.R;
-import be.jadoulle.examproject.pojo.User;
 import be.jadoulle.examproject.utilitary.Utilities;
 
 public class UserCreateAsyncTask extends AsyncTask<String, Void, String> {

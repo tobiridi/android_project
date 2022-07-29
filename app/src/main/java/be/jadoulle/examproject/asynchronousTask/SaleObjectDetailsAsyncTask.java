@@ -2,7 +2,6 @@ package be.jadoulle.examproject.asynchronousTask;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -14,7 +13,6 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 
 import be.jadoulle.examproject.DetailsSaleObjectActivity;
-import be.jadoulle.examproject.R;
 import be.jadoulle.examproject.pojo.User;
 import be.jadoulle.examproject.utilitary.Utilities;
 

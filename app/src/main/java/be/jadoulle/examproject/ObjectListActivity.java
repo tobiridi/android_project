@@ -30,10 +30,9 @@ import be.jadoulle.examproject.asynchronousTask.SaleObjectListAsyncTask;
 import be.jadoulle.examproject.pojo.SaleObject;
 import be.jadoulle.examproject.pojo.User;
 import be.jadoulle.examproject.utilitary.GlobalSettings;
-import be.jadoulle.examproject.utilitary.Utilities;
 
 public class ObjectListActivity extends AppCompatActivity {
-    public static final int OBJECT_LIST_ACTIVITY_CODE = 3;
+    public static final int OBJECT_LIST_ACTIVITY_CODE = GlobalSettings.OBJECT_LIST_ACTIVITY_CODE;
     public User user = null;
     public ArrayList<SaleObject> allSaleObjects = new ArrayList<>();
     public ArrayList<SaleObject> saleObjects = new ArrayList<>();
@@ -124,7 +123,7 @@ public class ObjectListActivity extends AppCompatActivity {
         }
     };
 
-    //TODO : to do
+    //TODO : i am here
     private View.OnClickListener tracking_object_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

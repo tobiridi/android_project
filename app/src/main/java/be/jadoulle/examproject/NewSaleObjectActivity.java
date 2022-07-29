@@ -22,7 +22,7 @@ import be.jadoulle.examproject.utilitary.GlobalSettings;
 import be.jadoulle.examproject.utilitary.Utilities;
 
 public class NewSaleObjectActivity extends AppCompatActivity {
-    public static final int NEW_SALE_OBJECT_ACTIVITY_CODE = 4;
+    public static final int NEW_SALE_OBJECT_ACTIVITY_CODE = GlobalSettings.NEW_SALE_OBJECT_ACTIVITY_CODE;
     public User user = null;
     public ArrayList<String> encodedBitmaps = new ArrayList<>();
 

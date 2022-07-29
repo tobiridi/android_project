@@ -99,9 +99,9 @@ public class Utilities {
     }
 
     public static String bitmapToBase64 (Bitmap bitmap) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,baos);
-        return Base64.encodeToString(baos.toByteArray(),Base64.DEFAULT);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,outputStream);
+        return Base64.encodeToString(outputStream.toByteArray(),Base64.DEFAULT);
     }
 
     public static Bitmap base64ToBitmap(String bitmapEncoded) {
@@ -136,6 +136,6 @@ public class Utilities {
     }
 
     public static boolean isPositivePrice(double number) {
-        return number > 0;
+        return number > 0.0;
     }
 }

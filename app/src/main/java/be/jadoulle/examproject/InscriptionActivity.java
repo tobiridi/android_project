@@ -9,9 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import be.jadoulle.examproject.asynchronousTask.UserCreateAsyncTask;
+import be.jadoulle.examproject.utilitary.GlobalSettings;
 
 public class InscriptionActivity extends AppCompatActivity {
-    public static final int INSCRIPTION_ACTIVITY_CODE = 2;
+    public static final int INSCRIPTION_ACTIVITY_CODE = GlobalSettings.INSCRIPTION_ACTIVITY_CODE;
 
     private View.OnClickListener cancel_listener = new View.OnClickListener() {
         @Override

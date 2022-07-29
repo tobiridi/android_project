@@ -1,35 +1,18 @@
 package be.jadoulle.examproject.asynchronousTask;
 
 import android.os.AsyncTask;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 
 import be.jadoulle.examproject.MainActivity;
 import be.jadoulle.examproject.R;
 import be.jadoulle.examproject.pojo.User;
-import be.jadoulle.examproject.utilitary.GlobalSettings;
 import be.jadoulle.examproject.utilitary.Utilities;
 
 public class UserConnectionAsyncTask extends AsyncTask<String, Void, String> {

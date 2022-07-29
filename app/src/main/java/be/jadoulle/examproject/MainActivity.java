@@ -8,8 +8,6 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -19,9 +17,10 @@ import android.widget.Toast;
 
 import be.jadoulle.examproject.asynchronousTask.UserConnectionAsyncTask;
 import be.jadoulle.examproject.pojo.User;
+import be.jadoulle.examproject.utilitary.GlobalSettings;
 
 public class MainActivity extends AppCompatActivity {
-    public static final int MAIN_ACTIVITY_CODE = 1;
+    public static final int MAIN_ACTIVITY_CODE = GlobalSettings.MAIN_ACTIVITY_CODE;
 
     private View.OnClickListener connection_listener = new View.OnClickListener() {
         @Override
