@@ -26,12 +26,13 @@ public class DetailsSaleObjectActivity extends AppCompatActivity {
     public SaleObject selectedSaleObject = null;
     private double saleObjectDistance = 0.0;
     public ArrayList<Bitmap> saleObjectBitmaps = new ArrayList<>();
+    private boolean isAlreadyTracking = false;
 
     private View.OnClickListener validate_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             CheckBox cb_tracking_object = findViewById(R.id.cb_tracking_object);
-            if (cb_tracking_object.isChecked()) {
+            if (cb_tracking_object.isChecked() && !(DetailsSaleObjectActivity.this.isAlreadyTracking)) {
                 new TrackingSaleObjectAddAsyncTask(DetailsSaleObjectActivity.this).execute();
             }
             else {
@@ -47,15 +48,20 @@ public class DetailsSaleObjectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details_sale_object);
 
         Intent details_sale_object_intent = getIntent();
-        DetailsSaleObjectActivity.this.user = (User) details_sale_object_intent.getSerializableExtra("user");
-        DetailsSaleObjectActivity.this.selectedSaleObject = (SaleObject) details_sale_object_intent.getSerializableExtra("selectedSaleObject");
-        DetailsSaleObjectActivity.this.saleObjectDistance = details_sale_object_intent.getDoubleExtra("saleObjectDistance",0.0);
+        this.user = (User) details_sale_object_intent.getSerializableExtra("user");
+        this.selectedSaleObject = (SaleObject) details_sale_object_intent.getSerializableExtra("selectedSaleObject");
+        this.saleObjectDistance = details_sale_object_intent.getDoubleExtra("saleObjectDistance",0.0);
+        this.isAlreadyTracking = details_sale_object_intent.getBooleanExtra("isAlreadyTracking", false);
 
         //System.out.println(user);
         //System.out.println(selectedSaleObject);
         //System.out.println(saleObjectDistance);
 
         findViewById(R.id.btn_validate).setOnClickListener(validate_listener);
+
+        //if pass from tracking object Activity
+        CheckBox cb_tracking_object = findViewById(R.id.cb_tracking_object);
+        cb_tracking_object.setChecked(this.isAlreadyTracking);
 
         new SaleObjectDetailsAsyncTask(DetailsSaleObjectActivity.this).execute();
 

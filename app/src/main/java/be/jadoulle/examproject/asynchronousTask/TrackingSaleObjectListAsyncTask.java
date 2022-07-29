@@ -9,23 +9,22 @@ import org.json.JSONException;
 
 import java.net.HttpURLConnection;
 
-import be.jadoulle.examproject.ObjectListActivity;
+import be.jadoulle.examproject.TrackingObjectActivity;
 import be.jadoulle.examproject.pojo.SaleObject;
 import be.jadoulle.examproject.pojo.User;
 import be.jadoulle.examproject.utilitary.Utilities;
 
+public class TrackingSaleObjectListAsyncTask extends AsyncTask<Void, Void, String> {
 
-public class SaleObjectListAsyncTask extends AsyncTask<Void, Void, String> {
+    private TrackingObjectActivity activity;
 
-    private ObjectListActivity activity;
-
-    public SaleObjectListAsyncTask(ObjectListActivity activity){
+    public TrackingSaleObjectListAsyncTask(TrackingObjectActivity activity){
         this.activity = activity;
     }
 
     @Override
     protected String doInBackground(Void... voids) {
-        String parameters = "all_sale_object=true";
+        String parameters = "id_user=" + this.activity.user.getId() + "&tracking_object=true";
         HttpURLConnection connection = Utilities.httpGetMethod(parameters);
         return Utilities.readServerJsonData(connection);
     }
@@ -41,7 +40,7 @@ public class SaleObjectListAsyncTask extends AsyncTask<Void, Void, String> {
                 User user = new User(id_user);
                 SaleObject saleObject = new Gson().fromJson(jsonObjects.getJSONObject(i).toString(), SaleObject.class);
                 saleObject.setUser(user);
-                this.activity.allSaleObjects.add(saleObject);
+                this.activity.allTrackingSaleObjects.add(saleObject);
             }
             this.activity.reloadSaleObjectList();
 

@@ -7,32 +7,32 @@
     tools:context=".TrackingObjectActivity">
 
     <TextView
+        style="@style/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tracking_objects_title"
-        style="@style/tv_title"
         android:layout_marginBottom="20dp"
-        />
+        android:text="@string/tracking_objects_title" />
 
-    <LinearLayout
+    <!-- list of objects -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableLayout
+            android:id="@+id/tl_sale_objects_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp">
+
+        </TableLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_validate"
+        style="@style/btn_validate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
-
-        <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cancel_text"
-            style="@style/btn_cancel"/>
-
-        <Button
-            android:id="@+id/btn_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/confirm_text"
-            style="@style/btn_confirm"/>
-    </LinearLayout>
+        android:layout_gravity="center"
+        android:text="@string/validate_text" />
 
 </LinearLayout>

@@ -38,13 +38,11 @@ public class NewSaleObjectActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             EditText et_object_name = findViewById(R.id.et_object_name);
-            EditText et_object_type = findViewById(R.id.et_object_type);
             EditText et_object_description = findViewById(R.id.et_object_description);
             EditText et_object_price = findViewById(R.id.et_object_price);
 
             new SaleObjectCreateAsyncTask(NewSaleObjectActivity.this).execute(
                     et_object_name.getText().toString(),
-                    et_object_type.getText().toString(),
                     et_object_description.getText().toString(),
                     et_object_price.getText().toString()
             );

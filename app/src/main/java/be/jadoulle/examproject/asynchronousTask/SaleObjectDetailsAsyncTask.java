@@ -42,7 +42,7 @@ public class SaleObjectDetailsAsyncTask extends AsyncTask<String, Void, String> 
     protected void onPostExecute(String jsonString) {
         super.onPostExecute(jsonString);
         try {
-            System.out.println(jsonString);
+            //System.out.println(jsonString);
             JSONObject jsonObject = new JSONObject(jsonString);
             if (!jsonObject.isNull("seller")){
                 //transform JSON into object

@@ -69,8 +69,6 @@ public class ObjectListActivity extends AppCompatActivity {
                     //System.out.println("elements dans la liste : " + ObjectListActivity.this.saleObjects.size());
                 }
             }
-
-            //System.out.println("taille de la liste pendant le listener : " + ObjectListActivity.this.saleObjects.size());
             ObjectListActivity.this.reloadSaleObjectList();
         }
 
@@ -118,12 +116,11 @@ public class ObjectListActivity extends AppCompatActivity {
                 startActivity(details_sale_object_intent);
 
             } catch (NullPointerException e) {
-                //e.printStackTrace();
+                e.printStackTrace();
             }
         }
     };
 
-    //TODO : i am here
     private View.OnClickListener tracking_object_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -202,13 +199,6 @@ public class ObjectListActivity extends AppCompatActivity {
         new SaleObjectListAsyncTask(ObjectListActivity.this).execute();
     }
 
-    //test
-    //onDestroy is called when the activity is finish from cancel button or previous button
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//    }
-
     private String saleObjectContent(SaleObject saleObject) {
         String description = saleObject.getDescription().substring(0, GlobalSettings.saleObjectDescriptionMinLength);
         if (saleObject.getDescription().length() > GlobalSettings.saleObjectDescriptionMinLength) {
@@ -221,7 +211,7 @@ public class ObjectListActivity extends AppCompatActivity {
                getResources().getString(R.string.object_price_text) + " : " + saleObject.getPrice() + " " + getResources().getString(R.string.currency);
     }
 
-    private void reloadSaleObjectList() {
+    public void reloadSaleObjectList() {
         try {
             TableLayout tl_sale_objects_list = findViewById(R.id.tl_sale_objects_list);
             tl_sale_objects_list.removeAllViews();

@@ -1,8 +1,16 @@
 package be.jadoulle.examproject.utilitary;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.LocationManager;
+import android.os.Build;
+import android.provider.Settings;
 import android.util.Base64;
+
+import androidx.core.app.ActivityCompat;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -18,6 +26,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import be.jadoulle.examproject.TrackingObjectActivity;
 
 public class Utilities {
     public static HttpURLConnection httpGetMethod(String parameters){

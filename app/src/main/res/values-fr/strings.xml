@@ -53,8 +53,9 @@
     <string name="editText_empty_message">Ce champ ne peut pas être vide</string>
     <string name="details_sale_object_title">Détails de l\'objet de vente</string>
     <string name="validate_text">Valider</string>
-    <string name="add_tracking_text">Ajouter aux objets suivi</string>
+    <string name="add_tracking_text">Ajouter aux objets à suivre</string>
     <string name="object_seller_text">Vendeur</string>
     <string name="tracking_already_exists_message">L\'objet est déjà suivi</string>
     <string name="tracking_success_message">Objet ajouté au suivi</string>
+    <string name="select_object_type_text">Selectionner le type d\'objet</string>
 </resources>

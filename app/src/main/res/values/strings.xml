@@ -27,6 +27,7 @@
     <string name="tracking_objects_text">Tracking objects</string>
     <string name="object_name_text">Object name</string>
     <string name="object_type_text">Object type</string>
+    <string name="select_object_type_text">Select object type</string>
     <string name="object_description_text">Object description</string>
     <string name="object_price_text">Price</string>
     <string name="object_seller_text">Seller</string>
