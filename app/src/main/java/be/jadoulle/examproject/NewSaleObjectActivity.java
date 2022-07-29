@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import be.jadoulle.examproject.asynchronousTask.SaleObjectCreateAsyncTask;
 import be.jadoulle.examproject.pojo.User;
+import be.jadoulle.examproject.utilitary.GlobalSettings;
 import be.jadoulle.examproject.utilitary.Utilities;
 
 public class NewSaleObjectActivity extends AppCompatActivity {
@@ -77,10 +78,23 @@ public class NewSaleObjectActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        //max pictures authorize
+        LinearLayout ll_image_sale_object = findViewById(R.id.ll_image_sale_object);
+        if (ll_image_sale_object.getChildCount() >= GlobalSettings.maxPictures) {
+            Button btn_add_image_sale_object = findViewById(R.id.btn_add_image_sale_object);
+            btn_add_image_sale_object.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null && requestCode == NEW_SALE_OBJECT_ACTIVITY_CODE) {
             if (resultCode == RESULT_OK) {
+                LinearLayout ll_image_sale_object = findViewById(R.id.ll_image_sale_object);
+
                 Bundle bundle = data.getExtras();
                 Bitmap bitmap = (Bitmap) bundle.get("data");
 
@@ -88,10 +102,10 @@ public class NewSaleObjectActivity extends AppCompatActivity {
                 encodedBitmaps.add(Utilities.bitmapToBase64(bitmap));
 
                 //add the image(s) to the list of sale object's images
-                LinearLayout ll_image_sale_object = findViewById(R.id.ll_image_sale_object);
                 ImageView imageView = new ImageView(NewSaleObjectActivity.this);
                 imageView.setImageBitmap(bitmap);
-                imageView.setPaddingRelative(10,10,10,10);
+                imageView.setPaddingRelative(10, 10, 10, 10);
+
                 ll_image_sale_object.addView(imageView);
             }
         }

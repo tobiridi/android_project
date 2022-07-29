@@ -100,7 +100,6 @@ public class ObjectListActivity extends AppCompatActivity {
         }
     };
 
-    //TODO : i am here
     private View.OnClickListener details_sale_object_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

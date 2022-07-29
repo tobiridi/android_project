@@ -20,6 +20,7 @@
     <string name="confirm_text">Confirm</string>
     <string name="validate_text">Validate</string>
     <string name="max_distance_text">Maximum distance</string>
+    <string name="distance_text" translatable="false">Distance</string>
     <string name="refresh_text">Refresh</string>
     <string name="logout_text">Logout</string>
     <string name="new_object_text">New object</string>
@@ -28,6 +29,7 @@
     <string name="object_type_text">Object type</string>
     <string name="object_description_text">Object description</string>
     <string name="object_price_text">Price</string>
+    <string name="object_seller_text">Seller</string>
     <string name="add_an_image_text">Add an image</string>
     <string name="add_tracking_text">Add to tracking objects</string>
     <string name="distance_measure" translatable="false">km</string>
@@ -47,7 +49,8 @@
     <string name="objects_not_loaded_message">Objects not loaded</string>
     <string name="objects_not_found_message">No object found</string>
     <string name="editText_empty_message">This field can not be empty</string>
-    <string name="validation_success_message">Validate successful</string>
+    <string name="tracking_already_exists_message">Object is already tracking</string>
+    <string name="tracking_success_message">Object added to tracking</string>
     <string name="cancel_message">Cancel</string>
     <string name="logout_message">Logout</string>
     <!-- object Types -->

@@ -54,5 +54,7 @@
     <string name="details_sale_object_title">Détails de l\'objet de vente</string>
     <string name="validate_text">Valider</string>
     <string name="add_tracking_text">Ajouter aux objets suivi</string>
-    <string name="validation_success_message">Validation réussie</string>
+    <string name="object_seller_text">Vendeur</string>
+    <string name="tracking_already_exists_message">L\'objet est déjà suivi</string>
+    <string name="tracking_success_message">Objet ajouté au suivi</string>
 </resources>

@@ -1,19 +1,12 @@
 package be.jadoulle.examproject.utilitary;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.util.Base64;
-
-import androidx.core.app.ActivityCompat;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -74,39 +67,6 @@ public class Utilities {
         return connection;
     }
 
-//    public static HttpURLConnection httpPostFilesMethod(String parameter){
-//        HttpURLConnection connection = null;
-//        String boundary = "===" + System.currentTimeMillis() + "===";
-//        try {
-//            URL url = new URL(GlobalSettings.urlServer);
-//            connection = (HttpURLConnection) url.openConnection();
-//            //POST HTTP request to server
-//            connection.setRequestMethod("POST");
-//            connection.setConnectTimeout(GlobalSettings.connectionTimeout);
-//            connection.setDoOutput(true);
-//            connection.setDoInput(true);
-//            connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
-//
-//            OutputStream outputStream = connection.getOutputStream();
-//            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, StandardCharsets.UTF_8));
-//            //put parameters in POST request
-//            bufferedWriter.write("--" + boundary + "\r\n");
-//            bufferedWriter.write(String.format("Content-Disposition:form-data;name=\"UploadedFile\";filename=\"%s\"\r\nContent-Type: application/x-zip-compressed\r\n\r\n", parameter));
-//
-//            bufferedWriter.flush();
-//            bufferedWriter.close();
-//            outputStream.close();
-//
-//            //the connection is established
-//            connection.connect();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return connection;
-//    }
-
     public static String readServerJsonData(HttpURLConnection connection) {
         String jsonString = "";
         InputStream inputStream;
@@ -137,7 +97,6 @@ public class Utilities {
 
         return jsonString;
     }
-
 
     public static String bitmapToBase64 (Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

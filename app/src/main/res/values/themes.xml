@@ -48,9 +48,10 @@
 
     <style name="tv_information">
         <item name="android:textSize">20sp</item>
-        <item name="android:layout_gravity">center</item>
         <item name="android:textAlignment">center</item>
         <item name="android:scrollbars">horizontal</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!-- editText style -->

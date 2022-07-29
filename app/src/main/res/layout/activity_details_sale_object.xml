@@ -17,56 +17,135 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical">
 
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:stretchColumns="1"
+            android:shrinkColumns="1">
 
-            <TextView
-                android:id="@+id/tv_object_name"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                style="@style/tv_information"
-                android:layout_margin="10dp"
-                android:autofillHints="name"/>
+            <!-- object name -->
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_object_type"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                style="@style/tv_information"
-                android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/object_name_text"
+                    android:textStyle="italic"
+                    android:textAlignment="textStart"
+                    style="@style/tv_information" />
 
-            <TextView
-                android:id="@+id/tv_object_description"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                style="@style/tv_information"
-                android:layout_margin="10dp"
-                android:autofillHints="name"/>
+                <TextView
+                    android:id="@+id/tv_object_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tv_information" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/tv_object_price"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                style="@style/tv_information"
-                android:layout_margin="10dp"
-                android:autofillHints="name"/>
+            <!-- object type -->
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_username_seller"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                style="@style/tv_information"
-                android:layout_margin="10dp"
-                android:autofillHints="name"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/object_type_text"
+                    android:textStyle="italic"
+                    android:textAlignment="textStart"
+                    style="@style/tv_information"/>
 
-            <TextView
-                android:id="@+id/tv_object_distance"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                style="@style/tv_information"/>
+                <TextView
+                    android:id="@+id/tv_object_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tv_information" />
+            </TableRow>
 
+            <!-- object description -->
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/object_description_text"
+                    android:textStyle="italic"
+                    android:textAlignment="textStart"
+                    style="@style/tv_information"/>
+
+                <TextView
+                    android:id="@+id/tv_object_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tv_information" />
+            </TableRow>
+
+            <!-- object price -->
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/object_price_text"
+                    android:textStyle="italic"
+                    android:textAlignment="textStart"
+                    style="@style/tv_information"/>
+
+                <TextView
+                    android:id="@+id/tv_object_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tv_information" />
+            </TableRow>
+
+            <!-- seller -->
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/object_seller_text"
+                    android:textStyle="italic"
+                    android:textAlignment="textStart"
+                    style="@style/tv_information"/>
+
+                <TextView
+                    android:id="@+id/tv_seller"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tv_information"
+                    />
+            </TableRow>
+
+            <!-- object distance -->
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/distance_text"
+                    android:textStyle="italic"
+                    android:textAlignment="textStart"
+                    style="@style/tv_information"/>
+
+                <TextView
+                    android:id="@+id/tv_object_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tv_information"/>
+            </TableRow>
+
+            <!-- sale object's images -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,9 +164,9 @@
                 android:id="@+id/cb_tracking_object"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add_tracking_text"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:text="@string/add_tracking_text" />
 
             <Button
                 android:id="@+id/btn_validate"
@@ -97,7 +176,7 @@
                 android:layout_gravity="center"
                 style="@style/btn_validate"/>
 
-        </LinearLayout>
+        </TableLayout>
     </ScrollView>
 
 </LinearLayout>
