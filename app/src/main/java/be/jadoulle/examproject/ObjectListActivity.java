@@ -74,14 +74,14 @@ public class ObjectListActivity extends AppCompatActivity {
 
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
-            //EMTPY
+            //EMPTY
         }
     };
 
     private View.OnClickListener logout_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent back_intent = new Intent();
+            Intent back_intent = getIntent();
             back_intent.putExtra("logout_message", getResources().getString(R.string.logout_message));
             setResult(RESULT_CANCELED, back_intent);
             finish();

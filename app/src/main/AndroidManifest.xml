@@ -16,6 +16,9 @@
         android:theme="@style/Theme.ExamProject"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SaleObjectTypeActivity"
+            android:exported="true" />
+        <activity
             android:name=".DetailsSaleObjectActivity"
             android:exported="true" />
         <activity

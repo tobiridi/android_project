@@ -2,10 +2,9 @@ package be.jadoulle.examproject.utilitary;
 
 public final class GlobalSettings {
     //pc maison
-    //public static String urlServer                    = "http://192.168.0.38/android/RPC_PHP.php";
-    //public static String urlServerHost                = "http://192.168.0.38/android/";
+    public static final String urlServer                          = "http://192.168.0.38/android/RPC_PHP.php";
     //pc portable
-    public static final String urlServer                    = "http://192.168.99.123/android/RPC_PHP.php";
+    //public static final String urlServer                    = "http://192.168.99.123/android/RPC_PHP.php";
     public static final int connectionTimeout               = 5000;        // milliseconds
     public static final long gpsUpdateTime                  = 5000L;       // milliseconds
     public static final float gpsDefaultDistance            = 20.0F;       // kilometer
@@ -21,4 +20,5 @@ public final class GlobalSettings {
     public static final int NEW_SALE_OBJECT_ACTIVITY_CODE   = 4;
     public static final int TRACKING_OBJECT_ACTIVITY_CODE   = 5;
     public static final int DETAILS_SALE_ACTIVITY_CODE      = 6;
+    public static final int SALE_OBJECT_TYPE_ACTIVITY_CODE  = 7;
 }

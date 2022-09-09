@@ -7,6 +7,7 @@
     <string name="tracking_objects_title">Tracking objects</string>
     <string name="new_sale_object_title">New sale object</string>
     <string name="details_sale_object_title">Sale object details</string>
+    <string name="sale_object_type_title">Select sale object type</string>
     <!-- input text -->
     <string name="email_address_text" translatable="false">Email</string>
     <string name="username_text">Username</string>
@@ -54,16 +55,4 @@
     <string name="tracking_success_message">Object added to tracking</string>
     <string name="cancel_message">Cancel</string>
     <string name="logout_message">Logout</string>
-    <!-- object Types -->
-    <string name="car">Car</string>
-    <string name="truck">Truck</string>
-    <string name="bicycle">Bicycle</string>
-    <string name="computer">Computer</string>
-    <string name="keyboard">Keyboard</string>
-    <string name="mouse">Mouse</string>
-    <string name="pants">Pants</string>
-    <string name="shirt">Shirt</string>
-    <string name="printer">Printer</string>
-    <string name="food">Food</string>
-    <string name="other">Other</string>
 </resources>

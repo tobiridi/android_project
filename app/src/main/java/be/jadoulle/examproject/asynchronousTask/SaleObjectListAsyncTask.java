@@ -43,7 +43,6 @@ public class SaleObjectListAsyncTask extends AsyncTask<Void, Void, String> {
                 saleObject.setUser(user);
                 this.activity.allSaleObjects.add(saleObject);
             }
-            this.activity.reloadSaleObjectList();
 
         } catch (JSONException e) {
             e.printStackTrace();

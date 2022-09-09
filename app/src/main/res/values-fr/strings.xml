@@ -37,17 +37,6 @@
     <string name="add_an_image_text">Ajouter une image</string>
     <string name="price_not_positive_message">Le prix doit être supérieur à 0</string>
     <string name="text_too_short_message">Le texte est trop court</string>
-    <string name="car">Voiture</string>
-    <string name="truck">Camion</string>
-    <string name="bicycle">Vélo</string>
-    <string name="computer">Ordinateur</string>
-    <string name="keyboard">Clavier</string>
-    <string name="mouse">Souris</string>
-    <string name="pants">Pantalon</string>
-    <string name="shirt">Chemise</string>
-    <string name="printer">Imprimante</string>
-    <string name="food">Nourriture</string>
-    <string name="other">Autre</string>
     <string name="objects_not_loaded_message">Objets non chargées</string>
     <string name="objects_not_found_message">Aucun objet trouvé</string>
     <string name="editText_empty_message">Ce champ ne peut pas être vide</string>
@@ -58,4 +47,5 @@
     <string name="tracking_already_exists_message">L\'objet est déjà suivi</string>
     <string name="tracking_success_message">Objet ajouté au suivi</string>
     <string name="select_object_type_text">Selectionner le type d\'objet</string>
+    <string name="sale_object_type_title">Sélectionner le type d\'objet</string>
 </resources>
